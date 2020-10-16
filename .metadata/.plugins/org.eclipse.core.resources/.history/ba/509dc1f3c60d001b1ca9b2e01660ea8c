@@ -1,0 +1,10 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmnls="http://www.w3.org/1999/xhtml"
+	xmnls:ui="http://java.sun.com/jsf/facelets"
+	xmnls:f="http://java.sun.com/jsf/core"
+	xmnls:h="http://java.sun.com/jsf/html">
+<h:head>
+</h:head>
+<body>
+</body>
+</html>

@@ -1,0 +1,8 @@
+package com.jcore.repository;
+
+import com.jcore.model.entity.GaUsrGroupMember;
+import com.jcore.model.entity.GaUsrGroupMemberPK;
+
+public interface Ga_Int_Access_Control extends JpaRepository<GaUsrGroupMember>{
+	public GaUsrGroupMember buscaPorLLaveTabla(GaUsrGroupMemberPK p_id) throws Exception;
+}

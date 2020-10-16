@@ -1,0 +1,9 @@
+path=C:\Users\julio.ospina\.m2\repository\com\sun\mail\javax.mail\1.6.0\javax.mail-1.6.0.jar
+size=653275
+archive=0
+path=C:\Users\julio.ospina\.m2\repository\javax\javaee-api\8.0\javaee-api-8.0.jar
+size=1979523
+archive=2
+path=C:\Users\julio.ospina\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar
+size=62983
+archive=0

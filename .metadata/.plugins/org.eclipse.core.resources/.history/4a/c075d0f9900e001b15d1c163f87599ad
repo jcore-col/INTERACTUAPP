@@ -1,0 +1,5 @@
+package com.jcore.ga;
+
+public static class Ga_c_const {
+
+}

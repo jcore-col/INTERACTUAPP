@@ -1,0 +1,47 @@
+package com.jcore.mantenimiento_entity;
+
+import java.io.Serializable;
+import java.util.List;
+
+import com.jcore.model.entity.GaUser;
+import com.jcore.repository.Ga_Int_User;
+
+public class Ga_Class_User implements Ga_Int_User,Serializable{
+	private static final long serialVersionUID = 1L;
+	@Override
+	public void insert(GaUser t) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(GaUser t) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(GaUser t) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<GaUser> devuelveTodos() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public GaUser buscaPorLLaveTabla(GaUser t) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public GaUser buscaPorLLaveTabla(String p_cod_usr) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

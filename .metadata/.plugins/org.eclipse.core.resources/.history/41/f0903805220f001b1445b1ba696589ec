@@ -1,0 +1,5 @@
+package com.jcore.constantes_sistema;
+
+public class Ga {
+	public static String unidadPersistenceJpa = "interactuapp_PU"; 
+}
