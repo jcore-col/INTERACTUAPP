@@ -20,13 +20,19 @@ public class GaUsrProperty implements Serializable {
 	private String codUsr;
 
 	@Column(name="acceso_sin_clave")
-	private byte accesoSinClave;
+	private String accesoSinClave;
 
 	@Column(name="cadenacon_bd")
 	private String cadenaconBd;
 
 	@Column(name="clave_acceso")
 	private String claveAcceso;
+
+	@Column(name="cod_campaign")
+	private int codCampaign;
+
+	@Column(name="cod_compania")
+	private int codCompania;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="fec_actu")
@@ -65,11 +71,11 @@ public class GaUsrProperty implements Serializable {
 		this.codUsr = codUsr;
 	}
 
-	public byte getAccesoSinClave() {
+	public String getAccesoSinClave() {
 		return this.accesoSinClave;
 	}
 
-	public void setAccesoSinClave(byte accesoSinClave) {
+	public void setAccesoSinClave(String accesoSinClave) {
 		this.accesoSinClave = accesoSinClave;
 	}
 
@@ -87,6 +93,22 @@ public class GaUsrProperty implements Serializable {
 
 	public void setClaveAcceso(String claveAcceso) {
 		this.claveAcceso = claveAcceso;
+	}
+
+	public int getCodCampaign() {
+		return this.codCampaign;
+	}
+
+	public void setCodCampaign(int codCampaign) {
+		this.codCampaign = codCampaign;
+	}
+
+	public int getCodCompania() {
+		return this.codCompania;
+	}
+
+	public void setCodCompania(int codCompania) {
+		this.codCompania = codCompania;
 	}
 
 	public Date getFecActu() {

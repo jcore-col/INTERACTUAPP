@@ -41,6 +41,8 @@
 		<class>com.jcore.model.entity.GaUsrGroupMember</class>
 		<class>com.jcore.model.entity.GaUsrGroupMemberPK</class>
 		<class>com.jcore.model.entity.GaUsrProperty</class>
+		<class>com.jcore.model.entity.CtLogPersonRegistry</class>
+		<class>com.jcore.model.entity.CtLogPersonRegistryPK</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property

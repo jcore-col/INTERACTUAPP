@@ -15,7 +15,7 @@ public class Ga_Class_AccessControl implements Ga_Int_AccessControl,Serializable
 	
 	private static final long serialVersionUID = 1L;
 	
-	@PersistenceContext( unitName = Ga.unidadPersistenceJpa)
+	@PersistenceContext( unitName = Ga.UNIDAD_PERSISTENCE_JPA)
 	private EntityManager em;
 	
 	@Override

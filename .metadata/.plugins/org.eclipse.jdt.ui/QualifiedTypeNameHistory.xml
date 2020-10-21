@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaUser"/>
 <fullyQualifiedTypeName name="com.jcore.repository.Ga_Int_UserRepository"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
 <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
 <fullyQualifiedTypeName name="javax.persistence.PersistenceContext"/>
-<fullyQualifiedTypeName name="com.jcore.constantes_sistema.Ga"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaUsrGroupMember"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaUsrGroupMemberPK"/>
@@ -14,4 +12,19 @@
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaAccessControl"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaAccessControlPK"/>
 <fullyQualifiedTypeName name="com.jcore.repository.Ga_Int_AccessControl"/>
+<fullyQualifiedTypeName name="com.jcore.model.entity.CtGeneralTercero"/>
+<fullyQualifiedTypeName name="com.jcore.model.entity.CtGeneralTerceroPK"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.jcore.model.entity.CtCampaignEntry"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="com.jcore.model.entity.CtCampaignEntryPK"/>
+<fullyQualifiedTypeName name="com.jcore.model.entity.CtInteractionLogEntry"/>
+<fullyQualifiedTypeName name="com.jcore.model.entity.CtInteractionLogEntryPK"/>
+<fullyQualifiedTypeName name="com.jcore.repository.Ga_Int_UsrProperty"/>
+<fullyQualifiedTypeName name="com.jcore.constantes_sistema.Ga"/>
+<fullyQualifiedTypeName name="com.jcore.model.entity.GaUsrProperty"/>
+<fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
+<fullyQualifiedTypeName name="com.jcore.utils.Message"/>
+<fullyQualifiedTypeName name="javax.inject.Inject"/>
+<fullyQualifiedTypeName name="com.jcore.clases_mantenimiento_entity.Ga_Class_UsrProperty"/>
 </qualifiedTypeNameHistroy>
