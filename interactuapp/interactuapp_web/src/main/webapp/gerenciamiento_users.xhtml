@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<h:form>
+		<p:growl id="messages" showDetail="true" />
+		<p:menuButton value="INTERACTUAPP">
+			<p:menuitem value="Home" url="menu_inicio.xhtml" icon="pi pi-home" />
+		</p:menuButton>
+	</h:form>
+	<h:form>
+		<p:growl id="messages" showDetail="true" />
+
+		<p:toolbar>
+			<f:facet name="right">
+				<p:commandButton type="button" value="Nuevo" icon="pi pi-file" />
+				<p:commandButton type="button" value="Guardar"
+					icon="pi pi-folder-open" />
+				<p:commandButton type="button" value="Editar"
+					icon="pi pi-folder-open" />
+			</f:facet>
+
+		</p:toolbar>
+		<h3>Responsive (PrimeFlex, Basic)</h3>
+			
+		<p:panelGrid id="gridUser"columns="3" layout="grid">
+			<p:outputLabel value="usuario" for=""/>
+			<p:inputText id="cod_usr" value="#loginController."/>
+			<h:outputText value="Content" />
+			<h:outputText value="Content" />
+			<h:outputText value="Content" />
+
+			<h:outputText value="Content" />
+			<h:outputText value="Content" />
+			<h:outputText value="Content" />
+
+			<h:outputText value="Content" />
+			<h:outputText value="Content" />
+			<h:outputText value="Content" />
+		</p:panelGrid>
+	</h:form>
+</body>
+</html>

@@ -27,4 +27,5 @@
 <fullyQualifiedTypeName name="com.jcore.utils.Message"/>
 <fullyQualifiedTypeName name="javax.inject.Inject"/>
 <fullyQualifiedTypeName name="com.jcore.clases_mantenimiento_entity.Ga_Class_UsrProperty"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 </qualifiedTypeNameHistroy>
