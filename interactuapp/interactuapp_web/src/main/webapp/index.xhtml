@@ -12,19 +12,24 @@
 		<h:form>
 			<p:growl id="messages" showDetail="true" />
 			<center>
-			<p:outputLabel>INTERACTUAPP</p:outputLabel>
+				<p:outputLabel>INTERACTUAPP</p:outputLabel>
 			</center>
-			<div class="centerDiv" style="width: 400px; margin: 100px 350px 180px 350px" >
+			<div class="centerDiv"
+				style="width: 400px; margin: 100px 350px 180px 350px">
 				<p:panel>
 					<f:facet name="header">Login</f:facet>
 					<h:panelGrid columns="2">
                 Usuario:
-                <h:inputText id="cod_usr" required="false" label="usuario"/><!--value="#{user.loginName}"-->
+                <h:inputText id="cod_usr" required="false"
+							label="usuario" />
+						<!--value="#{user.loginName}"-->
 							
                 Clave:
-                <h:inputSecret id="clave_acceso" required="false" label="Clave" /><!--value="#{user.loginPassword}"-->
+                <h:inputSecret id="clave_acceso" required="false"
+							label="Clave" />
+						<!--value="#{user.loginPassword}"-->
 					</h:panelGrid>
-					<p:commandButton value="INGRESAR" url="menu_inicio.xhtml" 
+					<p:commandButton value="INGRESAR" url="menu_inicio.xhtml"
 						ajax="false" />
 				</p:panel>
 			</div>

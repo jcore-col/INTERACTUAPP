@@ -27,12 +27,19 @@
 
 		<p:panelMenu style="width:350px">
 			<p:submenu label="Gerenciamiento sistema">
-				<p:menuitem value="Administrar usuarios sistema" url="gerenciamiento_users.xhtml"  icon="pi pi-save" />
+				<p:menuitem value="Administrar maestra usuarios sistema"
+					url="gerenciamiento_users.xhtml" icon="pi pi-save" />
+				<p:menuitem value="Administrar propiedades usuarios"
+					url="gerenciamiento_users.xhtml" icon="pi pi-save" />
+				<p:menuitem value="Asignar usuario a persona"
+					url="gerenciamiento_users.xhtml" icon="pi pi-save" />
+				<p:menuitem value="Asignar rol a usuario"
+					url="gerenciamiento_users.xhtml" icon="pi pi-save" />
 			</p:submenu>
 			<p:separator />
 			<p:submenu label="Gerenciamiento personas">
-				<p:menuitem value="Administrar personas" action="#{menuView.delete}" ajax="false"
-					icon="pi pi-times" />
+				<p:menuitem value="Administrar personas" action="#{menuView.delete}"
+					ajax="false" icon="pi pi-times" />
 			</p:submenu>
 			<p:separator />
 			<p:submenu label="Gerenciamiento campaña">

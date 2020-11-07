@@ -4,5 +4,6 @@ public interface JpaRepository<T> {
 	void insert(T t) throws Exception;
 	void update(T t) throws Exception;
 	void delete(T t) throws Exception;
-	List<T> devuelveTodos() throws Exception;
+	T findById(T t) throws Exception;
+	List<T> findAll() throws Exception;
 }

@@ -20,7 +20,7 @@ public class GaUser implements Serializable {
 	private String codUsr;
 
 	@Column(name="cambiar_contrasena")
-	private byte cambiarContrasena;
+	private String cambiarContrasena;
 
 	@Column(name="cod_idioma")
 	private String codIdioma;
@@ -52,11 +52,11 @@ public class GaUser implements Serializable {
 		this.codUsr = codUsr;
 	}
 
-	public byte getCambiarContrasena() {
+	public String getCambiarContrasena() {
 		return this.cambiarContrasena;
 	}
 
-	public void setCambiarContrasena(byte cambiarContrasena) {
+	public void setCambiarContrasena(String cambiarContrasena) {
 		this.cambiarContrasena = cambiarContrasena;
 	}
 

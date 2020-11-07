@@ -1,5 +1,0 @@
-package com.jcore.repository;
-
-public interface GaUserRepository {
-
-}

@@ -1,8 +1,0 @@
-package com.jcore.repository;
-
-import com.jcore.model.entity.GaUser;
-import com.jcore.model.entity.GaUsrGroupMember;
-
-public interface Ga_Int_Usr_Group_Member extends JpaRepository<GaUsrGroupMember>{
-	
-}

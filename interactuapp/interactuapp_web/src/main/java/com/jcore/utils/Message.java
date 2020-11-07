@@ -6,6 +6,9 @@ import javax.faces.context.FacesContext;
 
 public class Message {
 	
+	private Message() {
+	}
+	
 	public static FacesContext getContext()
 	{
 		return FacesContext.getCurrentInstance();
@@ -13,13 +16,13 @@ public class Message {
 	}
 	
 	
-	public static void registra_Warning(String p_txt_message) {
+	public static void registra_Info(String p_txt_message) {
 		addMessage(p_txt_message, FacesMessage.SEVERITY_INFO);
 	}
 	
 	
 	public static void registra_Error(String p_txt_message) {
-		addMessage(p_txt_message, FacesMessage.SEVERITY_ERROR);
+		addMessage("Error: "+p_txt_message, FacesMessage.SEVERITY_ERROR);
 	}
 	
 	public static void addMessage(String p_txt_mensaje, Severity p_tip_error) {
