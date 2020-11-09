@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence 
+		http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="interactuapp_PU" transaction-type="JTA">
+		<jta-data-source>java:/interactuappMySQLDS</jta-data-source>
+		<class>com.jcore.model.entity.CtCampaign</class>
+		<class>com.jcore.model.entity.CtCampaignPK</class>
+		<class>com.jcore.model.entity.CtCampaignEntry</class>
+		<class>com.jcore.model.entity.CtCampaignEntryPK</class>
+		<class>com.jcore.model.entity.CtGeneralTercero</class>
+		<class>com.jcore.model.entity.CtGeneralTerceroPK</class>
+		<class>com.jcore.model.entity.CtInteractionLogEntry</class>
+		<class>com.jcore.model.entity.CtInteractionLogEntryPK</class>
+		<class>com.jcore.model.entity.GaAccessControl</class>
+		<class>com.jcore.model.entity.GaAccessControlPK</class>
+		<class>com.jcore.model.entity.GaCiudad</class>
+		<class>com.jcore.model.entity.GaCiudadPK</class>
+		<class>com.jcore.model.entity.GaCodigosPostal</class>
+		<class>com.jcore.model.entity.GaCodigosPostalPK</class>
+		<class>com.jcore.model.entity.GaCompania</class>
+		<class>com.jcore.model.entity.GaEstado</class>
+		<class>com.jcore.model.entity.GaEstadoPK</class>
+		<class>com.jcore.model.entity.GaLocalidad</class>
+		<class>com.jcore.model.entity.GaLocalidadPK</class>
+		<class>com.jcore.model.entity.GaPai</class>
+		<class>com.jcore.model.entity.GaPermission</class>
+		<class>com.jcore.model.entity.GaPermissionPK</class>
+		<class>com.jcore.model.entity.GaProfesion</class>
+		<class>com.jcore.model.entity.GaRole</class>
+		<class>com.jcore.model.entity.GaTemplateCampo</class>
+		<class>com.jcore.model.entity.GaTemplateCampoPK</class>
+		<class>com.jcore.model.entity.GaTemplateHelpCampo</class>
+		<class>com.jcore.model.entity.GaTemplateHelpCampoPK</class>
+		<class>com.jcore.model.entity.GaTiposDocumento</class>
+		<class>com.jcore.model.entity.GaUser</class>
+		<class>com.jcore.model.entity.GaUsrGroup</class>
+		<class>com.jcore.model.entity.GaUsrGroupPK</class>
+		<class>com.jcore.model.entity.GaUsrGroupMember</class>
+		<class>com.jcore.model.entity.GaUsrGroupMemberPK</class>
+		<class>com.jcore.model.entity.GaUsrProperty</class>
+		<class>com.jcore.model.entity.CtLogPersonRegistry</class>
+		<class>com.jcore.model.entity.CtLogPersonRegistryPK</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property
+				name="javax.persistance.schema-generation.database.action"
+				value="drop-and-create" />
+		</properties>
+	</persistence-unit>
+
+</persistence>
