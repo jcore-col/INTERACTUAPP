@@ -26,6 +26,7 @@ public class GaUserController implements Serializable{
 	private GaUser gaUser;
 	private GaUser gaUserSelec;
 	private List<GaUser> gaUsers;
+	private String codUsrSearch;
 	
 	public void  loadUsers() {
 
@@ -55,6 +56,7 @@ public class GaUserController implements Serializable{
 		
 		this.gaUser = new GaUser();
 		this.gaUserSelec = new GaUser();
+		this.codUsrSearch = "";
 		this.loadUsers();
 	}
 	
@@ -157,18 +159,32 @@ public class GaUserController implements Serializable{
 	
 	public void findUser() {
 		
-		if (this.gaUser.getCodUsr() != null)
+		
+		if (this.codUsrSearch != null)
 		{
 			try
 			{
-				this.gaUser = this.gaUserCrudService.buscaPorUsr(this.gaUser.getCodUsr());
+				
+				this.gaUserSelec = this.gaUserCrudService.buscaPorUsr(this.codUsrSearch);
+				
+				
+				
+				if(this.gaUserSelec != null)
+				{
+					Message.registra_Info(" Usuario encontrado "+ this.codUsrSearch );
+					this.editUser();
+				}
+				else
+				{
+					Message.registra_Info(" Usuario no encontrado "+ this.codUsrSearch );
+					
+				}
+				
 			}
 			catch(Exception e)
 			{
 				Message.registra_Error("No existe usuario"+e.getMessage() );
 			}
-			
-			//this.clearUsers();
 			
 		}
 		else
@@ -177,5 +193,12 @@ public class GaUserController implements Serializable{
 		}
 		
 	}
+	public String getCodUsrSearch() {
+		return codUsrSearch;
+	}
+	public void setCodUsrSearch(String codUsrSearch) {
+		this.codUsrSearch = codUsrSearch;
+	}
+	
 	
 }

@@ -19,10 +19,12 @@
 		<!-- Barra herramientas opciones registro -->
 		<p:toolbar>
 			<f:facet name="right">
-				<p:commandButton value="Buscar" icon="pi pi-folder-open"
-					process="@this :formUser:gridUser"
-					actionListener="#{gaUserController.findUser()}"
-					update=":formUser:messages :formUser:gridUser :formUser:dtUser" />
+				<p:outputLabel value="Codigo usuario" for="codUsrSearch" />
+				<p:inputText id="codUsrSearch" required="false" maxlength="10"
+					value="#{gaUserController.codUsrSearch}" />
+				<p:commandButton process="@this :formUser:codUsrSearch"
+					update=":formUser:messages :formUser:gridUser"
+					actionListener="#{gaUserController.findUser()}" value="Buscar" />
 				<p:commandButton value="Guardar" icon="pi pi-folder-open"
 					process="@this :formUser:gridUser"
 					actionListener="#{gaUserController.saveUser()}"
@@ -34,7 +36,6 @@
 					process="@this" actionListener="#{gaUserController.deleteUser()}"
 					update=":formUser:messages :formUser:gridUser :formUser:dtUser" />
 			</f:facet>
-
 		</p:toolbar>
 		<p:panelGrid id="gridUser" columns="4" layout="grid">
 			<p:outputLabel value="Codigo usuario" for="cod_usr" />
@@ -57,23 +58,23 @@
 				value="#{gaUserController.gaUser.emailAutenticacion}" />
 			<p:outputLabel for="estado" value="Estado usuario" />
 			<p:selectOneMenu id="estado"
-				value="#{gaUserController.gaUser.estado}" required="true">
+				value="#{gaUserController.gaUser.estado}">
 				<f:selectItem itemLabel="Activo" itemValue="A" />
 				<f:selectItem itemLabel="Inactivo" itemValue="B" />
 			</p:selectOneMenu>
-			<p:outputLabel value="Ultima Actualizacion" for="fec_actu" />
-			<p:inputText id="fec_actu" readonly="true" required="false"
-				maxlength="60" value="#{gaUserController.gaUser.fecActu}" />
+			<p:outputLabel for="fec_actu" value="Fecha actualizacion" />
+			<p:calendar id="fec_actu" value="#{gaUserController.gaUser.fecActu}"
+				showIcon="true" />
 			<p:outputLabel for="fec_expiracion_usr" value="Fecha expiracion" />
 			<p:calendar id="fec_expiracion_usr"
-				value="#{gaUserController.gaUser.fecExpiracionUsr}" showIcon="true"
-				pattern="yyyy-mm-dd" />
+				value="#{gaUserController.gaUser.fecExpiracionUsr}" showIcon="true" />
 			<p:outputLabel value="Nombre usuario" for="nom_usr" />
 			<p:inputText id="nom_usr" required="false" maxlength="50"
 				value="#{gaUserController.gaUser.nomUsr}" />
 		</p:panelGrid>
-		<p:dataTable id="dtUser" value="#{gaUserController.gaUsers}" style="font-size:12px;" 
-			var="user" rowKey="#{user.codUsr}" selectionMode="single" emptyMessage="No existe usuarios de sistema">
+		<p:dataTable id="dtUser" value="#{gaUserController.gaUsers}"
+			style="font-size:12px;" var="user" rowKey="#{user.codUsr}"
+			selectionMode="single" emptyMessage="No existe usuarios de sistema">
 			<f:facet name="header">
 				<p:outputLabel value="Usuarios INTACTUAPP" />
 			</f:facet>

@@ -45,7 +45,9 @@ public class GaUserRepositoryImpl implements GaUserRepository,Serializable{
 	@Override
 	public GaUser buscaPorUsr(String p_cod_usr) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("SELECT a FROM GaUser a WHERE a.codUsr = ?1",GaUser.class)
+				.setParameter(1, p_cod_usr)
+				.getSingleResult();
 	}
 
 	@Override
