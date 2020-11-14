@@ -40,6 +40,11 @@ public class GaUserController implements Serializable{
 		}
 			
 	}
+	public void  clearUsers() {
+
+		this.gaUsers.clear();
+			
+	}
 	
 	public void resetForm() {
 		this.gaUser = new GaUser();
@@ -78,8 +83,9 @@ public class GaUserController implements Serializable{
 		
 	}
 	
-	public void selectUser(SelectEvent e) {
+	public void selectGaUser(SelectEvent e) {
 		this.gaUserSelec = (GaUser)e.getObject();
+		
 	}
 	
 	public void editUser() {
@@ -107,10 +113,12 @@ public class GaUserController implements Serializable{
 		{
 			if( this.gaUserSelec != null)
 			{
-				this.gaUserCrudService.delete(this.gaUserSelec);
-				Message.registra_Info("REGISTRO ELIMINADO");
+				Message.registra_Info("usuario a eliminar"+ this.gaUserSelec.getCodUsr());
+				this.gaUser = this.gaUserSelec;
+				this.gaUserCrudService.delete(this.gaUser);				
 				this.loadUsers();
 				this.resetForm();
+				Message.registra_Info("REGISTRO ELIMINADO");
 			}
 			else
 			{
@@ -147,5 +155,27 @@ public class GaUserController implements Serializable{
 		this.gaUsers = gaUsers;
 	}
 	
+	public void findUser() {
+		
+		if (this.gaUser.getCodUsr() != null)
+		{
+			try
+			{
+				this.gaUser = this.gaUserCrudService.buscaPorUsr(this.gaUser.getCodUsr());
+			}
+			catch(Exception e)
+			{
+				Message.registra_Error("No existe usuario"+e.getMessage() );
+			}
+			
+			//this.clearUsers();
+			
+		}
+		else
+		{
+			Message.registra_Info("porfavor digite un codigo de usuario");
+		}
+		
+	}
 	
 }

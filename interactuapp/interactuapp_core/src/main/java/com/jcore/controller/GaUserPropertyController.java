@@ -12,11 +12,12 @@ import org.primefaces.event.SelectEvent;
 
 import com.jcore.model.entity.GaUser;
 import com.jcore.service_interface.GaUserCrudService;
+import com.jcore.utils.Ga_Gbl_Var;
 import com.jcore.utils.Message;
 
 @Named
 @ViewScoped
-public class GaUserController implements Serializable{
+public class GaUserPropertyController implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -56,6 +57,7 @@ public class GaUserController implements Serializable{
 		
 		try
 		{
+			this.gaUser.setFecActu(Ga_Gbl_Var.getFecActual());
 			if(this.gaUser.getCodUsr() != null) 
 			{
 				this.gaUserCrudService.update(this.gaUser);
@@ -76,8 +78,9 @@ public class GaUserController implements Serializable{
 		
 	}
 	
-	public void selectUser(SelectEvent e) {
+	public void selectGaUser(SelectEvent e) {
 		this.gaUserSelec = (GaUser)e.getObject();
+		
 	}
 	
 	public void editUser() {
@@ -97,8 +100,32 @@ public class GaUserController implements Serializable{
 		{
 			Message.registra_Error("al actualizar el registro "+e.getMessage() );
 		}
+		
 	}
-	
+	public void deleteUser() {
+		
+		try
+		{
+			if( this.gaUserSelec != null)
+			{
+				Message.registra_Info("usuario a eliminar"+ this.gaUserSelec.getCodUsr());
+				this.gaUser = this.gaUserSelec;
+				this.gaUserCrudService.delete(this.gaUser);				
+				this.loadUsers();
+				this.resetForm();
+				Message.registra_Info("REGISTRO ELIMINADO");
+			}
+			else
+			{
+				Message.registra_Error("Porfavor seleccione un registro");
+			}
+		}
+		catch(Exception e)
+		{
+			Message.registra_Error("al borrar el registro "+e.getMessage() );
+		}
+		
+	}
 	public GaUser getGaUser() {
 		return gaUser;
 	}

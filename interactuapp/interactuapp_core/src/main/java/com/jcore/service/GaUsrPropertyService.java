@@ -1,16 +1,23 @@
 package com.jcore.service;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Named;
+import javax.persistence.TemporalType;
 import javax.transaction.Transactional;
 
 import com.jcore.model.entity.GaUser;
 import com.jcore.model.entity.GaUsrProperty;
 import com.jcore.repository.GaUsrPropertyRepository;
 import com.jcore.service_interface.GaUsrPropertyCrudService;
+import com.jcore.utils.Ga_Gbl_Var;
 
+//Clase de mantenimiento para entity usa las clase de tipo EntityManager
+@Named
 public class GaUsrPropertyService implements GaUsrPropertyCrudService, Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -21,6 +28,7 @@ public class GaUsrPropertyService implements GaUsrPropertyCrudService, Serializa
 	@Override
 	public void insert(GaUsrProperty t) throws Exception {
 		// TODO Auto-generated method stub
+		t.setFecActu(Ga_Gbl_Var.getFecActual());
 		this.gaUsrPropertyRepository.insert(t);
 	}
 
@@ -41,19 +49,19 @@ public class GaUsrPropertyService implements GaUsrPropertyCrudService, Serializa
 	@Override
 	public GaUsrProperty findById(GaUsrProperty t) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return this.gaUsrPropertyRepository.findById(t);
 	}
 
 	@Override
 	public List<GaUsrProperty> findAll() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return this.gaUsrPropertyRepository.findAll();
 	}
 
 	@Override
-	public GaUser buscaPorUsr(String p_cod_usr) throws Exception {
+	public GaUsrProperty buscaPorUsr(String p_cod_usr) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return this.gaUsrPropertyRepository.buscaPorUsr(p_cod_usr);
 	}
 
 }

@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 
 import com.jcore.constantes_sistema.Ga;
 import com.jcore.model.entity.GaUsrGroupMember;
-import com.jcore.model.entity.GaUsrGroupMemberPK;
 import com.jcore.repository.GaUsrGroupMemberRepository;
 
 public class GaUsrGroupMemberRepositoryImpl implements GaUsrGroupMemberRepository,Serializable{

@@ -32,7 +32,7 @@ public class GaUserRepositoryImpl implements GaUserRepository,Serializable{
 	@Override
 	public void delete(GaUser p_entity) throws Exception {
 		// TODO Auto-generated method stub
-		em.remove(p_entity);
+		em.remove(em.merge(p_entity));
 	}
 
 
@@ -51,7 +51,7 @@ public class GaUserRepositoryImpl implements GaUserRepository,Serializable{
 	@Override
 	public List<GaUser> findAll() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("SELECT a FROM GaUser a",GaUser.class).getResultList();
 	}
 
 }

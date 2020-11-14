@@ -5,6 +5,6 @@ import com.jcore.model.entity.GaUsrProperty;
 
 public interface GaUsrPropertyCrudService extends CrudService<GaUsrProperty>{
 	
-	GaUser buscaPorUsr(String p_cod_usr) throws Exception;
+	GaUsrProperty buscaPorUsr(String p_cod_usr) throws Exception;
 
 }

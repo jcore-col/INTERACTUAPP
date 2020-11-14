@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+	<!-- Menu -->
+	<h:form>
+		<p:growl id="messages" showDetail="true" />
+		<p:menuButton value="INTERACTUAPP">
+			<p:menuitem value="Home" url="menu_inicio.xhtml" icon="pi pi-home" />
+		</p:menuButton>
+	</h:form>
+	<h:form id="formUser">
+		<p:growl id="messages" showDetail="true" />
+		<!-- Barra herramientas opciones registro -->
+		<p:toolbar>
+			<f:facet name="right">
+				<p:commandButton value="Guardar" icon="pi pi-folder-open"
+					process="@this :formUser:gridUser"
+					actionListener="#{gaUserController.saveUser()}"
+					update=":formUser:messages :formUser:gridUser :formUser:dtUser" />
+				<p:commandButton value="Editar" icon="pi pi-folder-open"
+					process="@this" actionListener="#{gaUserController.editUser()}"
+					update=":formUser:messages :formUser:gridUser" />
+				<p:commandButton value="Eliminar" icon="pi pi-folder-open"
+					process="@this" actionListener="#{gaUserController.deleteUser()}"
+					update=":formUser:messages :formUser:gridUser :formUser:dtUser" />
+			</f:facet>
+
+		</p:toolbar>
+		<p:panelGrid id="gridUser" columns="4" layout="grid">
+			<p:outputLabel value="Codigo usuario" for="cod_usr" />
+			<p:inputText id="cod_usr" required="true" maxlength="10"
+				value="#{gaUserController.gaUser.codUsr}" />
+			<p:outputLabel value="Cambiar clave" for="cambiar_contrasena" />
+			<p:selectOneMenu id="cambiar_contrasena"
+				value="#{gaUserController.gaUser.cambiarContrasena}"
+				required="false">
+				<f:selectItem itemLabel="SI" itemValue="S" />
+				<f:selectItem itemLabel="NO" itemValue="N" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Idioma" for="cod_idioma" />
+			<p:selectOneMenu id="cod_idioma"
+				value="#{gaUserController.gaUser.codIdioma}" required="false">
+				<f:selectItem itemLabel="ESPANOL" itemValue="ES" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Email" for="email_autenticacion" />
+			<p:inputText id="email_autenticacion" required="true" maxlength="60"
+				value="#{gaUserController.gaUser.emailAutenticacion}" />
+			<p:outputLabel for="estado" value="Estado usuario" />
+			<p:selectOneMenu id="estado"
+				value="#{gaUserController.gaUser.estado}" required="true">
+				<f:selectItem itemLabel="Activo" itemValue="A" />
+				<f:selectItem itemLabel="Inactivo" itemValue="B" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Ultima Actualizacion" for="fec_actu" />
+			<p:inputText id="fec_actu" readonly="true" required="false"
+				maxlength="60" value="#{gaUserController.gaUser.fecActu}" />
+			<p:outputLabel for="fec_expiracion_usr" value="Fecha expiracion" />
+			<p:calendar id="fec_expiracion_usr"
+				value="#{gaUserController.gaUser.fecExpiracionUsr}" showIcon="true"
+				pattern="yyyy-mm-dd" />
+			<p:outputLabel value="Nombre usuario" for="nom_usr" />
+			<p:inputText id="nom_usr" required="false" maxlength="50"
+				value="#{gaUserController.gaUser.nomUsr}" />
+		</p:panelGrid>
+		<p:dataTable id="dtUser" value="#{gaUserController.gaUsers}" style="font-size:12px;" 
+			var="user" rowKey="#{user.codUsr}" selectionMode="single" emptyMessage="No existe usuarios de sistema">
+			<f:facet name="header">
+				<p:outputLabel value="Usuarios INTACTUAPP" />
+			</f:facet>
+			<p:ajax event="rowSelect" listener="#{gaUserController.selectGaUser}" />
+			<p:column headerText="usuario">
+				<h:outputText value="#{user.codUsr}" />
+			</p:column>
+
+			<p:column headerText="cambiar contrasena">
+				<h:outputText value="#{user.cambiarContrasena}" />
+			</p:column>
+
+			<p:column headerText="idioma">
+				<h:outputText value="#{user.codIdioma}" />
+			</p:column>
+
+			<p:column headerText="email">
+				<h:outputText value="#{user.emailAutenticacion}" />
+			</p:column>
+
+			<p:column headerText="estado">
+				<h:outputText value="#{user.estado}" />
+			</p:column>
+
+			<p:column headerText="ultima actualizacion">
+				<h:outputText value="#{user.fecActu}" />
+			</p:column>
+
+			<p:column headerText="expiracion usr">
+				<h:outputText value="#{user.fecExpiracionUsr}" />
+			</p:column>
+
+			<p:column headerText="nombre">
+				<h:outputText value="#{user.nomUsr}" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

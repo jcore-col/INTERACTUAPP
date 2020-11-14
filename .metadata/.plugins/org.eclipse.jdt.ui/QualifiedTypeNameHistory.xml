@@ -11,7 +11,6 @@
 <fullyQualifiedTypeName name="com.jcore.model.entity.CtGeneralTercero"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.CtGeneralTerceroPK"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.CtCampaignEntry"/>
-<fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.CtCampaignEntryPK"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.CtInteractionLogEntry"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.CtInteractionLogEntryPK"/>
@@ -45,6 +44,12 @@
 <fullyQualifiedTypeName name="java.io.Serializable"/>
 <fullyQualifiedTypeName name="javax.inject.Named"/>
 <fullyQualifiedTypeName name="javax.faces.view.ViewScoped"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.text.DateFormat"/>
+<fullyQualifiedTypeName name="java.time.LocalDate"/>
+<fullyQualifiedTypeName name="java.sql.DataTruncation"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="com.jcore.utils.Ga_Gbl_Var"/>
 </qualifiedTypeNameHistroy>

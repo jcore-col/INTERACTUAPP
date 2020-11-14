@@ -7,11 +7,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
-import com.jcore.model.entity.GaUser;
 import com.jcore.model.entity.GaUsrGroupMember;
 import com.jcore.repository.GaUsrGroupMemberRepository;
 import com.jcore.service_interface.GaUsrGroupMemberCrudservice;
-import com.jcore.service_interface.GaUsrPropertyCrudService;
 
 @Named
 public class GaUsrGroupMemberService implements GaUsrGroupMemberCrudservice, Serializable{
