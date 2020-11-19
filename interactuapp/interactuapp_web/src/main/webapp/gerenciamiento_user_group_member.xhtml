@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+	<!-- Menu -->
+	<h:form>
+		<p:growl id="messages" showDetail="true" />
+		<p:menuButton value="INTERACTUAPP">
+			<p:menuitem value="Home" url="menu_inicio.xhtml" icon="pi pi-home" />
+		</p:menuButton>
+	</h:form>
+	<h:form id="formUser">
+		<p:growl id="messages" showDetail="true" />
+		<!-- Barra herramientas opciones registro -->
+		<p:toolbar>
+			<f:facet name="right">
+				<p:outputLabel value="Codigo usuario" for="codUsrSearch" />
+				<p:inputText id="codUsrSearch" required="false" maxlength="10"
+					value="#{gaUsrGroupMemberController.codUsrSearch}" />
+				<p:commandButton process="@this :formUser:codUsrSearch"
+					update=":formUser:messages :formUser:gridUser"
+					actionListener="#{gaUsrGroupMemberController.findUser()}" value="Buscar" />
+				<p:commandButton value="Guardar" icon="pi pi-folder-open"
+					process="@this :formUser:gridUser"
+					actionListener="#{gaUsrGroupMemberController.saveUser()}"
+					update=":formUser:messages :formUser:gridUser :formUser:dtUser" />
+				<p:commandButton value="Editar" icon="pi pi-folder-open"
+					process="@this" actionListener="#{gaUsrGroupMemberController.editUser()}"
+					update=":formUser:messages :formUser:gridUser" />
+				<p:commandButton value="Eliminar" icon="pi pi-folder-open"
+					process="@this" actionListener="#{gaUsrGroupMemberController.deleteUser()}"
+					update=":formUser:messages :formUser:gridUser :formUser:dtUser" />
+			</f:facet>
+		</p:toolbar>
+		<p:panelGrid id="gridUser" columns="4" layout="grid">
+			<p:outputLabel value="Codigo usuario" for="cod_usr" />
+			<p:inputText id="cod_usr" required="true" maxlength="10"
+				value="#{gaUsrGroupMemberController.gaUsrGroupMember.id.codUsr}" />
+			<p:outputLabel value="Grupo Usuarios" for="cod_usr_group" />
+			<p:selectOneMenu id="cod_usr_group"
+				value="#{gaUsrGroupMemberController.gaUsrGroupMember.id.codGrpUsr}" required="true">
+				<f:selectItem itemLabel="Administradores" itemValue="ADMIN" />
+				<f:selectItem itemLabel="Lideres campana" itemValue="LIDER" />
+			</p:selectOneMenu>
+			<p:outputLabel for="cod_compania" value="compania usuario predeterminada" />
+			<p:selectOneMenu id="cod_compania"
+				value="#{gaUsrGroupMemberController.gaUsrGroupMember.id.codCompania}">
+				<f:selectItem itemLabel="Colombia" itemValue="1" />
+			</p:selectOneMenu>
+			<p:outputLabel for="tip_docum" value="Tipo Documento" />
+			<p:selectOneMenu id="tip_docum"
+				value="#{gaUsrGroupMemberController.gaUsrGroupMember.tipDocum}">
+				<f:selectItem itemLabel="Cedula" itemValue="CC" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Documento identificacion" for="cod_docum" />
+			<p:inputText id="cod_docum" required="false" maxlength="20"
+				value="#{gaUsrGroupMemberController.gaUsrGroupMember.codDocum}" />
+			<p:outputLabel for="fec_actu" value="Fecha actualizacion" />
+			<p:calendar id="fec_actu" value="#{gaUsrGroupMemberController.gaUsrGroupMember.fecActu}"
+				showIcon="true" />
+		</p:panelGrid>
+		<p:dataTable id="dtUser" value="#{gaUsrGroupMemberController.gaUsrsGroupMember}"
+			style="font-size:12px;" var="user" rowKey="#{user.id.codUsr}"
+			selectionMode="single" emptyMessage="No existe usuarios de sistema">
+			<f:facet name="header">
+				<p:outputLabel value="Usuarios INTACTUAPP" />
+			</f:facet>
+			<p:ajax event="rowSelect" listener="#{gaUsrGroupMemberController.selectGaUsrGroupMember}" />
+			
+			<p:column headerText="compania">
+				<h:outputText value="#{user.id.codCompania}" />
+			</p:column>
+			
+			<p:column headerText="usuario">
+				<h:outputText value="#{user.id.codUsr}" />
+			</p:column>
+
+			<p:column headerText="grupo usuario">
+				<h:outputText value="#{user.id.codGrpUsr}" />
+			</p:column>
+
+			<p:column headerText="tipo documento">
+				<h:outputText value="#{user.tipDocum}" />
+			</p:column>
+
+			<p:column headerText="documento">
+				<h:outputText value="#{user.codDocum}" />
+			</p:column>
+
+			<p:column headerText="ultima actualizacion">
+				<h:outputText value="#{user.fecActu}" />
+			</p:column>
+
+
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

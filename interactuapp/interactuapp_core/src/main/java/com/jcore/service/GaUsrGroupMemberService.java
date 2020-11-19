@@ -9,10 +9,10 @@ import javax.transaction.Transactional;
 
 import com.jcore.model.entity.GaUsrGroupMember;
 import com.jcore.repository.GaUsrGroupMemberRepository;
-import com.jcore.service_interface.GaUsrGroupMemberCrudservice;
+import com.jcore.service_interface.GaUsrGroupMemberCrudService;
 
 @Named
-public class GaUsrGroupMemberService implements GaUsrGroupMemberCrudservice, Serializable{
+public class GaUsrGroupMemberService implements GaUsrGroupMemberCrudService, Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	@Inject
@@ -46,7 +46,17 @@ public class GaUsrGroupMemberService implements GaUsrGroupMemberCrudservice, Ser
 	@Override
 	public List<GaUsrGroupMember> findAll() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return this.gaUsrGroupMemberRepository.findAll();
+	}
+	@Override
+	public GaUsrGroupMember buscaPorUsr(String p_cod_usr) throws Exception {
+		// TODO Auto-generated method stub
+		return this.gaUsrGroupMemberRepository.buscaPorUsr(p_cod_usr);
+	}
+	@Override
+	public GaUsrGroupMember buscaPorDoc(String p_cod_usr) throws Exception {
+		// TODO Auto-generated method stub
+		return this.gaUsrGroupMemberRepository.buscaPorDoc(p_cod_usr);
 	}
 	
 

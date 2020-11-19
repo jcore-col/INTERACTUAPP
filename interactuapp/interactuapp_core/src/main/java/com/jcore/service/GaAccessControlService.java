@@ -51,6 +51,12 @@ public class GaAccessControlService implements GaAccessControlCrudService, Seria
 		// TODO Auto-generated method stub
 		return this.gaAccessControlRepository.findAll();
 	}
+
+	@Override
+	public List<GaAccessControl> buscaPorUsr(String p_cod_usr) throws Exception {
+		// TODO Auto-generated method stub
+		return this.gaAccessControlRepository.buscaPorUsr(p_cod_usr);
+	}
 	
 	
 

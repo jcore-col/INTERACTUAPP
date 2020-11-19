@@ -1,13 +1,10 @@
 package com.jcore.service;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.TemporalType;
 import javax.transaction.Transactional;
 
 import com.jcore.model.entity.GaUser;

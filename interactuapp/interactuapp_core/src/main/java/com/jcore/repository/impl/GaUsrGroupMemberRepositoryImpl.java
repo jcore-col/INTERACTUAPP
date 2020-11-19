@@ -50,6 +50,23 @@ public class GaUsrGroupMemberRepositoryImpl implements GaUsrGroupMemberRepositor
 	@Override
 	public List<GaUsrGroupMember> findAll() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("SELECT a FROM GaUsrGroupMember a",GaUsrGroupMember.class).getResultList();
 	}
+
+	@Override
+	public GaUsrGroupMember buscaPorUsr(String p_cod_usr) throws Exception {
+		// TODO Auto-generated method stub
+		return em.createQuery("SELECT a FROM GaUsrGroupMember a WHERE a.codUsr = ?1",GaUsrGroupMember.class)
+				.setParameter(1, p_cod_usr)
+				.getSingleResult();
+	}
+
+	@Override
+	public GaUsrGroupMember buscaPorDoc(String p_cod_usr) throws Exception {
+		// TODO Auto-generated method stub
+		return em.createQuery("SELECT a FROM GaUsrGroupMember a WHERE a.codDocum = ?1",GaUsrGroupMember.class)
+				.setParameter(1, p_cod_usr)
+				.getSingleResult();
+	}
+
 }

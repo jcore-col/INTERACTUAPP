@@ -10,9 +10,11 @@ import javax.inject.Named;
 
 import org.primefaces.event.SelectEvent;
 
+import com.jcore.constantes_sistema.Ga;
 import com.jcore.model.entity.GaUser;
+import com.jcore.model.entity.GaUsrProperty;
 import com.jcore.service_interface.GaUserCrudService;
-import com.jcore.utils.Ga_Gbl_Var;
+import com.jcore.service_interface.GaUsrPropertyCrudService;
 import com.jcore.utils.Message;
 
 @Named
@@ -23,6 +25,8 @@ public class GaUserController implements Serializable{
 	
 	@Inject
 	private GaUserCrudService  gaUserCrudService;
+	@Inject
+	private GaUsrPropertyCrudService  gaUsrPropertyCrudService;
 	private GaUser gaUser;
 	private GaUser gaUserSelec;
 	private List<GaUser> gaUsers;
@@ -33,6 +37,27 @@ public class GaUserController implements Serializable{
 		try 
 		{
 			this.gaUsers = this.gaUserCrudService.findAll();
+			
+		}
+		catch (Exception e)
+		{
+			Message.registra_Error(e.getMessage());
+		}
+			
+	}
+	public void  insertGaUsrPropertyDefault() {
+		
+		GaUsrProperty usrPropertyAux = new GaUsrProperty();
+		usrPropertyAux.setAccesoSinClave(Ga.NOT);
+		usrPropertyAux.setCodUsr(this.gaUser.getCodUsr());
+		usrPropertyAux.setCodCampaign(1);
+		usrPropertyAux.setCodCompania(1);
+		usrPropertyAux.setFecActu(this.gaUser.getFecActu());
+		usrPropertyAux.setClaveAcceso(Ga.CLAVE_DEFAULT);
+		
+		try 
+		{
+			this.gaUsrPropertyCrudService.insert(usrPropertyAux);
 			
 		}
 		catch (Exception e)
@@ -64,8 +89,19 @@ public class GaUserController implements Serializable{
 		
 		try
 		{
-			this.gaUser.setFecActu(Ga_Gbl_Var.getFecActual());
-			if(this.gaUser.getCodUsr() != null) 
+			GaUser userAux;
+			
+			try 
+			{
+				userAux = this.gaUserCrudService.buscaPorUsr(this.gaUser.getCodUsr());
+			}
+			catch(Exception e)
+			{
+				userAux = null;
+			}
+			
+			
+			if(userAux != null) 
 			{
 				this.gaUserCrudService.update(this.gaUser);
 				Message.registra_Info("REGISTRO ACTUALIZADO");
@@ -73,8 +109,12 @@ public class GaUserController implements Serializable{
 			else
 			{
 				this.gaUserCrudService.insert(this.gaUser);
+				
+				this.insertGaUsrPropertyDefault();
+				
 				Message.registra_Info("REGISTRO AGREGADO");
 			}
+			
 			this.loadUsers();
 			this.resetForm();
 		}

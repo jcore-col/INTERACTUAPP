@@ -32,24 +32,26 @@ public class GaAccessControlRepositoryImpl implements GaAccessControlRepository,
 	@Override
 	public void delete(GaAccessControl p_entity) throws Exception {
 		// TODO Auto-generated method stub
-		em.remove(p_entity);
+		em.remove(em.merge(p_entity));
 	}
 
 
 	@Override
 	public GaAccessControl findById(GaAccessControl t) throws Exception {
 		// TODO Auto-generated method stub
-		return em.createQuery("SELECT a FROM ga_acces_control a WHERE a.cod_usr = ?"
-				+ "AND a.cod_rol = ?"
-				,GaAccessControl.class).
-				setParameter(1, t.getId().getCodUsr()).
-				setParameter(2, t.getId().getCodRol()).
-				getSingleResult();
+		return null;
 	}
 
 	@Override
 	public List<GaAccessControl> findAll() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<GaAccessControl> buscaPorUsr(String p_cod_usr) throws Exception {
+		// TODO Auto-generated method stub
+		return em.createQuery("SELECT a FROM GaAccessControl a WHERE a.id.codUsr = ?1",GaAccessControl.class)
+				.setParameter(1, p_cod_usr).getResultList();
 	}
 }

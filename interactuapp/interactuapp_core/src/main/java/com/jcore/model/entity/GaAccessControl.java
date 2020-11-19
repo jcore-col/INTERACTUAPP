@@ -29,6 +29,7 @@ public class GaAccessControl implements Serializable {
 	private String nomUsr;
 
 	public GaAccessControl() {
+		this.id = new GaAccessControlPK();
 	}
 
 	public GaAccessControlPK getId() {

@@ -1,6 +1,7 @@
 package com.jcore.model.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -35,6 +36,7 @@ public class GaUsrGroupMember implements Serializable {
 	private String tipDocum;
 
 	public GaUsrGroupMember() {
+		this.id = new GaUsrGroupMemberPK();
 	}
 
 	public GaUsrGroupMemberPK getId() {

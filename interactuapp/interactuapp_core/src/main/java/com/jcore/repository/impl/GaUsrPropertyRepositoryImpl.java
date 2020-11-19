@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.jcore.constantes_sistema.Ga;
+import com.jcore.model.entity.GaUser;
 import com.jcore.model.entity.GaUsrProperty;
 import com.jcore.repository.GaUsrPropertyRepository;
 
@@ -38,7 +39,7 @@ public class GaUsrPropertyRepositoryImpl implements GaUsrPropertyRepository,Seri
 	@Override
 	public GaUsrProperty buscaPorUsr(String p_cod_usr) throws Exception {
 		// TODO Auto-generated method stub
-		return em.createQuery("SELECT a FROM ga_usr_property a WHERE a.cod_usr = ?",GaUsrProperty.class).
+		return em.createQuery("SELECT a FROM GaUsrProperty a WHERE a.codUsr = ?1",GaUsrProperty.class).
 				setParameter(1, p_cod_usr).
 				getSingleResult();
 	}
@@ -52,7 +53,7 @@ public class GaUsrPropertyRepositoryImpl implements GaUsrPropertyRepository,Seri
 	@Override
 	public List<GaUsrProperty> findAll() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("SELECT a FROM GaUsrProperty a",GaUsrProperty.class).getResultList();
 	}
 
 

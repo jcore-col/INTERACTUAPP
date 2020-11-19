@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+	<!-- Menu -->
+	<h:form>
+		<p:growl id="messages" showDetail="true" />
+		<p:menuButton value="INTERACTUAPP">
+			<p:menuitem value="Home" url="menu_inicio.xhtml" icon="pi pi-home" />
+		</p:menuButton>
+	</h:form>
+	<h:form id="formUser">
+		<p:growl id="messages" showDetail="true" />
+		<!-- Barra herramientas opciones registro -->
+		<p:toolbar>
+			<f:facet name="right">
+				<p:outputLabel value="Codigo usuario" for="codUsrSearch" />
+				<p:inputText id="codUsrSearch" required="false" maxlength="10"
+					value="#{gaAccessControlController.codUsrSearch}" />
+				<p:commandButton process="@this :formUser:codUsrSearch"
+					update=":formUser:messages :formUser:dtUser"
+					actionListener="#{gaAccessControlController.findUser()}"
+					value="Buscar" />
+				<p:commandButton value="Guardar" icon="pi pi-folder-open"
+					process="@this :formUser:gridUser"
+					actionListener="#{gaAccessControlController.saveUser()}"
+					update=":formUser:messages :formUser:gridUser :formUser:dtUser" />
+				<p:commandButton value="Editar" icon="pi pi-folder-open"
+					process="@this"
+					actionListener="#{gaAccessControlController.editUser()}"
+					update=":formUser:messages :formUser:gridUser" />
+				<p:commandButton value="Eliminar" icon="pi pi-folder-open"
+					process="@this"
+					actionListener="#{gaAccessControlController.deleteUser()}"
+					update=":formUser:messages :formUser:gridUser :formUser:dtUser" />
+			</f:facet>
+		</p:toolbar>
+		<p:panelGrid id="gridUser" columns="4" layout="grid">
+			<p:outputLabel value="Codigo usuario" for="cod_usr" />
+			<p:inputText id="cod_usr" required="true" maxlength="10"
+				value="#{gaAccessControlController.gaAccessControl.id.codUsr}" />
+			<p:outputLabel value="Codigo Rol" for="codRol" />
+			<p:selectOneMenu id="codRol"
+				value="#{gaAccessControlController.gaAccessControl.id.codRol}"
+				required="true">
+				<f:selectItem itemLabel="Administrador" itemValue="1" />
+				<f:selectItem itemLabel="Lider social" itemValue="2" />
+			</p:selectOneMenu>
+			<p:outputLabel for="fec_actu" value="Fecha actualizacion" />
+			<p:calendar id="fec_actu"
+				value="#{gaAccessControlController.gaAccessControl.fecActu}"
+				showIcon="true" />
+		</p:panelGrid>
+		<p:dataTable id="dtUser"
+			value="#{gaAccessControlController.gaAccessControlByUsr}"
+			style="font-size:12px;" var="user" rowKey="#{user.id.codUsr}"
+			selectionMode="single" emptyMessage="No existe usuarios de sistema">
+			<f:facet name="header">
+				<p:outputLabel value="Usuarios INTACTUAPP" />
+			</f:facet>
+			<p:ajax event="rowSelect"
+				listener="#{gaAccessControlController.selectGaAccessControl}" />
+
+			<p:column headerText="codigo usuario">
+				<h:outputText value="#{user.id.codUsr}" />
+			</p:column>
+
+			<p:column headerText="Nombre usuario">
+				<h:outputText value="#{user.nomUsr}" />
+			</p:column>
+
+			<p:column headerText="codigo Rol">
+				<h:outputText value="#{user.id.codRol}" />
+			</p:column>
+
+			<p:column headerText="Nombre Rol">
+				<h:outputText value="#{user.nomRol}" />
+			</p:column>
+
+			<p:column headerText="ultima actualizacion">
+				<h:outputText value="#{user.fecActu}" />
+			</p:column>
+
+
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>
