@@ -25,7 +25,6 @@ public class GaRoleService implements GaRoleCrudService, Serializable{
 	@Override
 	public void insert(GaRole t) throws Exception {
 		// TODO Auto-generated method stub
-		t.setFecActu(Ga_Gbl_Var.getFecActual());
 		this.gaRoleRepository.insert(t);
 		
 	}

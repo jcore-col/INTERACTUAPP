@@ -63,7 +63,6 @@ public class GaUsrGroupMemberController implements Serializable{
 		
 		try
 		{
-			this.gaUsrGroupMember.setFecActu(Ga_Gbl_Var.getFecActual());
 			if(this.gaUsrGroupMember.getId().getCodUsr() != null) 
 			{
 				this.gaUsrGroupMemberCrudService.update(this.gaUsrGroupMember);

@@ -25,7 +25,6 @@ public class GaUserService implements GaUserCrudService, Serializable{
 	@Override
 	public void insert(GaUser t) throws Exception {
 		// TODO Auto-generated method stub
-		t.setFecActu(Ga_Gbl_Var.getFecActual());
 		this.gaUserRepository.insert(t);
 		
 	}

@@ -64,7 +64,6 @@ public class GaUsrPropertyController implements Serializable{
 		
 		try
 		{
-			this.gaUsrProperty.setFecActu(Ga_Gbl_Var.getFecActual());
 			if(this.gaUsrProperty.getCodUsr() != null) 
 			{
 				this.gaUsrPropertyCrudService.update(this.gaUsrProperty);

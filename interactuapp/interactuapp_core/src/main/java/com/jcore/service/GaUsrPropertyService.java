@@ -28,7 +28,6 @@ public class GaUsrPropertyService implements GaUsrPropertyCrudService, Serializa
 	@Override
 	public void insert(GaUsrProperty t) throws Exception {
 		// TODO Auto-generated method stub
-		t.setFecActu(Ga_Gbl_Var.getFecActual());
 		this.gaUsrPropertyRepository.insert(t);
 	}
 

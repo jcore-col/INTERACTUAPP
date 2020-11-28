@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.jcore.repository.Ga_Int_UserRepository"/>
-<fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
 <fullyQualifiedTypeName name="javax.persistence.PersistenceContext"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.jcore.repository.Ga_Int_Usr_Group_Member"/>
@@ -15,8 +13,6 @@
 <fullyQualifiedTypeName name="com.jcore.model.entity.CtInteractionLogEntryPK"/>
 <fullyQualifiedTypeName name="com.jcore.repository.Ga_Int_UsrProperty"/>
 <fullyQualifiedTypeName name="com.jcore.clases_mantenimiento_entity.Ga_Class_UsrProperty"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-<fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
 <fullyQualifiedTypeName name="javax.faces.webapp.FacesServlet"/>
 <fullyQualifiedTypeName name="com.jcore.repository.impl.Ga_Class_User"/>
 <fullyQualifiedTypeName name="com.jcore.repository.Ga_Int_User"/>
@@ -41,8 +37,6 @@
 <fullyQualifiedTypeName name="java.time.LocalDate"/>
 <fullyQualifiedTypeName name="java.sql.DataTruncation"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
-<fullyQualifiedTypeName name="java.sql.Date"/>
-<fullyQualifiedTypeName name="com.jcore.utils.Ga_Gbl_Var"/>
 <fullyQualifiedTypeName name="com.jcore.service_interface.GaUsrPropertyCrudService"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaUsrProperty"/>
 <fullyQualifiedTypeName name="com.jcore.constantes_sistema.Ga"/>
@@ -56,4 +50,14 @@
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaRole"/>
 <fullyQualifiedTypeName name="com.jcore.service_interface.GaUserCrudService"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaUser"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="javax.faces.event.ActionEvent"/>
+<fullyQualifiedTypeName name="org.primefaces.context.RequestContext"/>
+<fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
+<fullyQualifiedTypeName name="com.jcore.utils.Ga_Gbl_Var"/>
+<fullyQualifiedTypeName name="org.primefaces.expression.impl.ThisExpressionResolver"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="com.jcore.utils.GlobalSession"/>
 </qualifiedTypeNameHistroy>
