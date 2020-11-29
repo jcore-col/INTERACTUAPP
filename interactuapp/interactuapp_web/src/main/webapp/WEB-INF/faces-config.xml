@@ -8,14 +8,25 @@
 	<navigation-rule>
 		<from-view-id>/login.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>action_login_ok</from-outcome>
-			<to-view-id>/menu_inicio.xhtml</to-view-id>
+			<from-outcome>action_login_ok_1</from-outcome>
+			<to-view-id>/menu_inicio_admin.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>action_login_ok_2</from-outcome>
+			<to-view-id>/menu_inicio_lider.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
-		<from-view-id>/menu_inicio.xhtml</from-view-id>
+		<from-view-id>/menu_inicio_admin.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>action_logout</from-outcome>
+			<from-outcome>action_login_logout</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/menu_inicio_lider.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>action_login_logout</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>

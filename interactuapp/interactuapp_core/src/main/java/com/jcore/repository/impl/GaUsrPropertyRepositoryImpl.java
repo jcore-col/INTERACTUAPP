@@ -33,7 +33,7 @@ public class GaUsrPropertyRepositoryImpl implements GaUsrPropertyRepository,Seri
 	@Override
 	public void delete(GaUsrProperty p_entity) throws Exception {
 		// TODO Auto-generated method stub
-		em.remove(p_entity);
+		em.remove(em.merge(p_entity));
 	}
 
 	@Override

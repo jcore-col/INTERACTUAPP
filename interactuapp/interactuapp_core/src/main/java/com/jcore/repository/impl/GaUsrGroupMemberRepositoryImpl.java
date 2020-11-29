@@ -32,7 +32,7 @@ public class GaUsrGroupMemberRepositoryImpl implements GaUsrGroupMemberRepositor
 	@Override
 	public void delete(GaUsrGroupMember p_entity) throws Exception {
 		// TODO Auto-generated method stub
-		em.remove(p_entity);
+		em.remove(em.merge(p_entity));
 	}
 
 	@Override

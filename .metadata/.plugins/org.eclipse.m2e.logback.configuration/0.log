@@ -7422,3 +7422,155 @@ Caused by: org.eclipse.core.runtime.CoreException: One or more constraints have 
 2020-11-27 23:52:28,614 [Worker-52: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2020-11-27 23:52:28,715 [Worker-52: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for interactuapp_web
 2020-11-27 23:52:28,724 [Worker-52: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 3 sec
+2020-11-28 18:06:26,970 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2020-11-28 19:47:36,723 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2020-11-28 19:47:42,659 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.jcore:interactuapp_web:1.0 @ C:\INTERACTUAPP\interactuapp\interactuapp_web\pom.xml.
+2020-11-28 19:47:43,237 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 19:47:43,689 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 19:47:45,112 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 19:47:45,945 [Worker-65: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /interactuapp_web/src/main/java
+2020-11-28 19:47:45,946 [Worker-65: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /interactuapp_web/src/main/resources
+2020-11-28 19:47:45,947 [Worker-65: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /interactuapp_web/src/test/java
+2020-11-28 19:47:45,947 [Worker-65: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /interactuapp_web/src/test/resources
+2020-11-28 19:47:47,494 [Worker-65: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 19:47:47,533 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 19:47:47,539 [Worker-65: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 19:47:47,541 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 19:47:47,889 [Worker-65: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for interactuapp_web
+2020-11-28 19:47:47,904 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 11 sec
+2020-11-28 19:53:03,904 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2020-11-28 19:53:04,847 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.jcore:interactuapp_web:1.0 @ C:\INTERACTUAPP\interactuapp\interactuapp_web\pom.xml.
+2020-11-28 19:53:04,940 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 19:53:05,619 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 19:53:05,899 [Worker-65: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /interactuapp_web/src/main/java
+2020-11-28 19:53:05,900 [Worker-65: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /interactuapp_web/src/main/resources
+2020-11-28 19:53:05,901 [Worker-65: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /interactuapp_web/src/test/java
+2020-11-28 19:53:05,901 [Worker-65: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /interactuapp_web/src/test/resources
+2020-11-28 19:53:07,427 [Worker-65: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 19:53:07,430 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 19:53:07,433 [Worker-65: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 19:53:07,435 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 19:53:07,563 [Worker-65: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for interactuapp_web
+2020-11-28 19:53:07,571 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 3 sec
+2020-11-28 19:54:22,972 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2020-11-28 19:54:23,677 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.jcore:interactuapp_web:1.0 @ C:\INTERACTUAPP\interactuapp\interactuapp_web\pom.xml.
+2020-11-28 19:54:23,746 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 19:54:24,328 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 19:54:24,566 [Worker-65: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /interactuapp_web/src/main/java
+2020-11-28 19:54:24,567 [Worker-65: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /interactuapp_web/src/main/resources
+2020-11-28 19:54:24,568 [Worker-65: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /interactuapp_web/src/test/java
+2020-11-28 19:54:24,568 [Worker-65: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /interactuapp_web/src/test/resources
+2020-11-28 19:54:25,769 [Worker-65: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 19:54:25,772 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 19:54:25,775 [Worker-65: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 19:54:25,777 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 19:54:25,862 [Worker-65: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for interactuapp_web
+2020-11-28 19:54:25,870 [Worker-65: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 2 sec
+2020-11-28 19:54:36,004 [Worker-67: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 19:54:36,006 [Worker-67: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-28 19:54:36,018 [Worker-67: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 19:54:36,020 [Worker-67: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 19:54:36,747 [Worker-67: Building Workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 19:54:36,811 [Worker-67: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 19:54:36,813 [Worker-67: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 19:54:36,820 [Worker-67: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 19:54:36,823 [Worker-67: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 19:54:36,824 [Worker-67: Building Workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of interactuapp_web
+2020-11-28 19:54:36,828 [Worker-67: Building Workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for interactuapp_web
+2020-11-28 19:54:36,840 [Worker-67: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:02:24,513 [Worker-78: Cleaning all projects] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for interactuapp_web
+2020-11-28 21:02:25,994 [Worker-82: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:02:25,996 [Worker-82: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-28 21:02:26,008 [Worker-82: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:02:26,010 [Worker-82: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:02:26,565 [Worker-82: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:02:26,566 [Worker-82: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:02:26,569 [Worker-82: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:02:26,572 [Worker-82: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:02:26,575 [Worker-82: Building Workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of interactuapp_web
+2020-11-28 21:02:26,575 [Worker-82: Building Workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for interactuapp_web
+2020-11-28 21:02:26,594 [Worker-82: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:02:38,562 [Worker-81: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2020-11-28 21:02:40,360 [Worker-81: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.jcore:interactuapp_web:1.0 @ C:\INTERACTUAPP\interactuapp\interactuapp_web\pom.xml.
+2020-11-28 21:02:40,425 [Worker-81: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 21:02:40,937 [Worker-81: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 21:02:41,063 [Worker-81: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /interactuapp_web/src/main/java
+2020-11-28 21:02:41,064 [Worker-81: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /interactuapp_web/src/main/resources
+2020-11-28 21:02:41,065 [Worker-81: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /interactuapp_web/src/test/java
+2020-11-28 21:02:41,066 [Worker-81: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /interactuapp_web/src/test/resources
+2020-11-28 21:02:41,885 [Worker-81: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:02:41,892 [Worker-81: Updating Maven Project] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:02:41,895 [Worker-81: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:02:41,897 [Worker-81: Updating Maven Project] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:02:41,898 [Worker-81: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of interactuapp_web
+2020-11-28 21:02:41,899 [Worker-81: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for interactuapp_web
+2020-11-28 21:02:41,904 [Worker-81: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:02:41,994 [Worker-81: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for interactuapp_web
+2020-11-28 21:02:42,000 [Worker-81: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 3 sec
+2020-11-28 21:03:00,657 [Worker-82: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2020-11-28 21:03:01,276 [Worker-82: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.jcore:interactuapp_web:1.0 @ C:\INTERACTUAPP\interactuapp\interactuapp_web\pom.xml.
+2020-11-28 21:03:01,330 [Worker-82: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 21:03:01,880 [Worker-82: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 21:03:02,068 [Worker-82: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /interactuapp_web/src/main/java
+2020-11-28 21:03:02,068 [Worker-82: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /interactuapp_web/src/main/resources
+2020-11-28 21:03:02,069 [Worker-82: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /interactuapp_web/src/test/java
+2020-11-28 21:03:02,069 [Worker-82: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /interactuapp_web/src/test/resources
+2020-11-28 21:03:03,054 [Worker-82: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:03:03,056 [Worker-82: Updating Maven Project] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:03:03,057 [Worker-82: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:03:03,060 [Worker-82: Updating Maven Project] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:03:03,705 [Worker-82: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for interactuapp_web
+2020-11-28 21:03:03,714 [Worker-82: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 3 sec
+2020-11-28 21:03:24,859 [Worker-80: Building Workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 21:03:24,878 [Worker-80: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:03:24,883 [Worker-80: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:03:24,885 [Worker-80: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:03:24,887 [Worker-80: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:03:24,887 [Worker-80: Building Workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of interactuapp_web
+2020-11-28 21:03:24,888 [Worker-80: Building Workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for interactuapp_web
+2020-11-28 21:03:24,893 [Worker-80: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:27:27,594 [Worker-70: Cleaning all projects] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for interactuapp_web
+2020-11-28 21:27:29,338 [Worker-91: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:27:29,339 [Worker-91: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-28 21:27:29,346 [Worker-91: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:27:29,348 [Worker-91: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:27:29,954 [Worker-91: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:27:29,956 [Worker-91: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:27:29,958 [Worker-91: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:27:29,959 [Worker-91: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:27:29,960 [Worker-91: Building Workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of interactuapp_web
+2020-11-28 21:27:29,960 [Worker-91: Building Workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for interactuapp_web
+2020-11-28 21:27:29,974 [Worker-91: Building Workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:27:41,299 [Worker-91: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2020-11-28 21:27:41,847 [Worker-91: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.jcore:interactuapp_web:1.0 @ C:\INTERACTUAPP\interactuapp\interactuapp_web\pom.xml.
+2020-11-28 21:27:41,915 [Worker-91: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 21:27:42,591 [Worker-91: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 21:27:42,758 [Worker-91: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /interactuapp_web/src/main/java
+2020-11-28 21:27:42,759 [Worker-91: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /interactuapp_web/src/main/resources
+2020-11-28 21:27:42,760 [Worker-91: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /interactuapp_web/src/test/java
+2020-11-28 21:27:42,761 [Worker-91: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /interactuapp_web/src/test/resources
+2020-11-28 21:27:42,989 [Worker-70: Updating workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 21:27:43,605 [Worker-91: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:27:43,608 [Worker-91: Updating Maven Project] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:27:43,609 [Worker-91: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:27:43,611 [Worker-91: Updating Maven Project] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:27:43,612 [Worker-91: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of interactuapp_web
+2020-11-28 21:27:43,612 [Worker-91: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for interactuapp_web
+2020-11-28 21:27:43,616 [Worker-91: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:27:44,606 [Worker-91: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for interactuapp_web
+2020-11-28 21:27:44,612 [Worker-91: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 3 sec
+2020-11-28 21:28:11,957 [Worker-70: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2020-11-28 21:28:12,482 [Worker-70: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.jcore:interactuapp_web:1.0 @ C:\INTERACTUAPP\interactuapp\interactuapp_web\pom.xml.
+2020-11-28 21:28:12,537 [Worker-70: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 21:28:13,287 [Worker-70: Updating Maven Project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 21:28:13,412 [Worker-70: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /interactuapp_web/src/main/java
+2020-11-28 21:28:13,413 [Worker-70: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /interactuapp_web/src/main/resources
+2020-11-28 21:28:13,414 [Worker-70: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /interactuapp_web/src/test/java
+2020-11-28 21:28:13,415 [Worker-70: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /interactuapp_web/src/test/resources
+2020-11-28 21:28:13,612 [Worker-87: Updating workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/interactuapp_core: com.jcore:interactuapp_core:1.0 with classifier  to /interactuapp_core/target/classes
+2020-11-28 21:28:14,686 [Worker-70: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:28:14,689 [Worker-70: Updating Maven Project] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:28:14,691 [Worker-70: Updating Maven Project] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-11-28 21:28:14,693 [Worker-70: Updating Maven Project] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-28 21:28:15,652 [Worker-70: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for interactuapp_web
+2020-11-28 21:28:15,658 [Worker-70: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 3 sec

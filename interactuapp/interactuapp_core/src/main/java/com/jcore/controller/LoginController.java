@@ -10,14 +10,17 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.el.ELParseException;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.expression.impl.ThisExpressionResolver;
 
 import com.jcore.constantes_sistema.Ga;
+import com.jcore.model.entity.GaAccessControl;
 import com.jcore.model.entity.GaUser;
 import com.jcore.model.entity.GaUsrProperty;
+import com.jcore.service_interface.GaAccessControlCrudService;
 import com.jcore.service_interface.GaUserCrudService;
 import com.jcore.service_interface.GaUsrPropertyCrudService;
 import com.jcore.utils.Ga_Gbl_Var;
@@ -34,17 +37,22 @@ public class LoginController implements Serializable {
 	private GaUserCrudService gaUserCrudService;
 	@Inject
 	private GaUsrPropertyCrudService gaUsrPropertyCrudService;
+	@Inject
+	private GaAccessControlCrudService gAccessControlService;
+	private List<GaAccessControl> gaAccessControl;
 	private GaUser gaUser;
 	private GaUsrProperty gaUsrProperty;
 	
-	private String codUsrLogin;
 	private String claveAccessoLogin;
+	
+	private String navigationCase;
 
 	@PostConstruct
 	public void init() {
 
 		this.gaUser = new GaUser();
 		this.gaUsrProperty = new GaUsrProperty();
+		this.navigationCase= "action_login_ok_";
 	}
 
 	public GaUser getGaUser() {
@@ -97,28 +105,61 @@ public class LoginController implements Serializable {
 				GlobalSession.asignaGlobal("cod_compania", this.gaUsrProperty.getCodCompania());
 				GlobalSession.asignaGlobal("cod_campaing", this.gaUsrProperty.getCodCampaign());
 				
-				return "action_login_ok";
+				try
+				{
+					this.gaAccessControl = this.gAccessControlService.buscaPorUsr(this.gaUser.getCodUsr());
+					
+					
+					if (this.gaAccessControl.size() > 1)
+					{
+						this.navigationCase = this.navigationCase + "1";
+					}
+					else
+					{
+						if (this.gaAccessControl.size() == 1)
+						{
+							for (GaAccessControl e : this.gaAccessControl)
+							{
+								this.navigationCase = this.navigationCase + e.getId().getCodRol();
+							}
+						}
+						
+					}
+					
+					
+					GlobalSession.asignaGlobal("listAccessControlUsr", this.gaAccessControl);
+				
+				}
+				catch(Exception e)
+				{
+					Message.registra_Error("El usuario"+this.gaUser.getCodUsr()+" No tiene permisos configurados");
+					
+				}
+				
+				
+				return this.navigationCase;
 			}
 			else
 			{
 				Message.registra_Info("Contrasena invalida");
-				
+				resetForm();
 				return null;
 			}
 		}
 		else
 		{
 			Message.registra_Info("Debe ingresar credenciales");
+			resetForm();
 			return  null;
 		}
 	}
 
-	public String getCodUsrLogin() {
-		return codUsrLogin;
-	}
-
-	public void setCodUsrLogin(String codUsrLogin) {
-		this.codUsrLogin = codUsrLogin;
+	public void resetForm()
+	{
+		this.gaUser = new GaUser();
+		this.gaUsrProperty = new GaUsrProperty();
+		this.claveAccessoLogin = "";
+		this.navigationCase = "action_login_ok_";
 	}
 
 	public String getClaveAccessoLogin() {
@@ -132,7 +173,7 @@ public class LoginController implements Serializable {
 	public String logout() {
 		HttpSession session = GlobalSession.getSession();
 		session.invalidate();
-		return "action_logout";
+		return "action_login_logout";
 	}
 
 	
