@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="com.jcore.repository.Ga_Int_Usr_Group_Member"/>
-<fullyQualifiedTypeName name="com.jcore.model.entity.GaAccessControlPK"/>
-<fullyQualifiedTypeName name="com.jcore.repository.Ga_Int_AccessControl"/>
-<fullyQualifiedTypeName name="com.jcore.model.entity.CtGeneralTercero"/>
-<fullyQualifiedTypeName name="com.jcore.model.entity.CtGeneralTerceroPK"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.CtCampaignEntry"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.CtCampaignEntryPK"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.CtInteractionLogEntry"/>
@@ -60,4 +54,10 @@
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaAccessControl"/>
 <fullyQualifiedTypeName name="com.jcore.service_interface.GaAccessControlCrudService"/>
 <fullyQualifiedTypeName name="javax.servlet.jsp.el.ELParseException"/>
+<fullyQualifiedTypeName name="com.jcore.repository.GaProfesionRepository"/>
+<fullyQualifiedTypeName name="com.jcore.repository.GaEstadoRepository"/>
+<fullyQualifiedTypeName name="com.jcore.repository.GaLocalidadRepository"/>
+<fullyQualifiedTypeName name="com.jcore.model.entity.GaLocalidad"/>
+<fullyQualifiedTypeName name="com.jcore.model.entity.GaCiudad"/>
+<fullyQualifiedTypeName name="com.jcore.repository.GaCiudadRepository"/>
 </qualifiedTypeNameHistroy>
