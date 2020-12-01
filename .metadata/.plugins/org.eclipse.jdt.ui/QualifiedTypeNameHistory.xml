@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.jcore.model.entity.CtCampaignEntry"/>
-<fullyQualifiedTypeName name="com.jcore.model.entity.CtCampaignEntryPK"/>
-<fullyQualifiedTypeName name="com.jcore.model.entity.CtInteractionLogEntry"/>
-<fullyQualifiedTypeName name="com.jcore.model.entity.CtInteractionLogEntryPK"/>
-<fullyQualifiedTypeName name="com.jcore.repository.Ga_Int_UsrProperty"/>
-<fullyQualifiedTypeName name="com.jcore.clases_mantenimiento_entity.Ga_Class_UsrProperty"/>
-<fullyQualifiedTypeName name="javax.faces.webapp.FacesServlet"/>
 <fullyQualifiedTypeName name="com.jcore.repository.impl.Ga_Class_User"/>
 <fullyQualifiedTypeName name="com.jcore.repository.Ga_Int_User"/>
 <fullyQualifiedTypeName name="com.jcore.repository.GaAccessControlRepository"/>
@@ -32,7 +25,6 @@
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaUsrProperty"/>
 <fullyQualifiedTypeName name="com.jcore.constantes_sistema.Ga"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaUsrGroupMember"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.jcore.service_interface.GaUsrGroupMemberCrudService"/>
 <fullyQualifiedTypeName name="javax.inject.Inject"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaUsrGroupMemberPK"/>
@@ -54,10 +46,18 @@
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaAccessControl"/>
 <fullyQualifiedTypeName name="com.jcore.service_interface.GaAccessControlCrudService"/>
 <fullyQualifiedTypeName name="javax.servlet.jsp.el.ELParseException"/>
-<fullyQualifiedTypeName name="com.jcore.repository.GaProfesionRepository"/>
-<fullyQualifiedTypeName name="com.jcore.repository.GaEstadoRepository"/>
-<fullyQualifiedTypeName name="com.jcore.repository.GaLocalidadRepository"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaLocalidad"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaCiudad"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.jcore.service_interface.CtGeneralTerceroCrudService"/>
+<fullyQualifiedTypeName name="com.jcore.repository.CtGeneralTerceroRepository"/>
+<fullyQualifiedTypeName name="com.jcore.service_interface.GaProfesionCrudService"/>
+<fullyQualifiedTypeName name="com.jcore.model.entity.GaProfesion"/>
+<fullyQualifiedTypeName name="com.jcore.repository.GaProfesionRepository"/>
+<fullyQualifiedTypeName name="com.jcore.repository.GaEstadoRepository"/>
+<fullyQualifiedTypeName name="com.jcore.service_interface.GaEstadoCrudService"/>
+<fullyQualifiedTypeName name="com.jcore.service_interface.GaCiudadCrudService"/>
 <fullyQualifiedTypeName name="com.jcore.repository.GaCiudadRepository"/>
+<fullyQualifiedTypeName name="com.jcore.service_interface.GaLocalidadCrudService"/>
+<fullyQualifiedTypeName name="com.jcore.repository.GaLocalidadRepository"/>
 </qualifiedTypeNameHistroy>

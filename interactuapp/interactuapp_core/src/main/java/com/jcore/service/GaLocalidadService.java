@@ -1,49 +1,45 @@
-package com.jcore.repository.impl;
+package com.jcore.service;
 
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.transaction.Transactional;
 
-import com.jcore.constantes_sistema.Ga;
 import com.jcore.model.entity.GaLocalidad;
 import com.jcore.repository.GaLocalidadRepository;
+import com.jcore.service_interface.GaLocalidadCrudService;
 
-public class GaLocalidadRepositoryImpl implements GaLocalidadRepository,Serializable{
-	
+//Clase de mantenimiento para entity usa las clase de tipo EntityManager
+@Named
+public class GaLocalidadService implements GaLocalidadCrudService, Serializable{
+
 	private static final long serialVersionUID = 1L;
-	@PersistenceContext( unitName = Ga.UNIDAD_PERSISTENCE_JPA)
-	private EntityManager em;
 	
-	
-	@Override
-	public List<GaLocalidad> findAll() throws Exception {
-		// TODO Auto-generated method stub
-		return em.createQuery("SELECT a FROM GaLocalidad a",GaLocalidad.class).getResultList();
-	}
+	@Inject 
+	private GaLocalidadRepository gaLocalidadRepository;
 
-
+	@Transactional
 	@Override
 	public void insert(GaLocalidad t) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
-
+	@Transactional
 	@Override
 	public void update(GaLocalidad t) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
-
+	@Transactional
 	@Override
 	public void delete(GaLocalidad t) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 	@Override
 	public GaLocalidad findById(GaLocalidad t) throws Exception {
@@ -51,16 +47,25 @@ public class GaLocalidadRepositoryImpl implements GaLocalidadRepository,Serializ
 		return null;
 	}
 
+	@Override
+	public List<GaLocalidad> findAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public List<GaLocalidad> devLocalidadesPorCiudad(String cod_pais, String cod_ciudad) throws Exception {
 		// TODO Auto-generated method stub
-		return em.createQuery("SELECT a FROM GaLocalidad a "
-				+ "WHERE a.codPais = ?1 and a.codCiudad = ?2",GaLocalidad.class)
-				.setParameter(1, cod_pais)
-				.setParameter(2, cod_ciudad).getResultList();
+		return this.gaLocalidadRepository.devLocalidadesPorCiudad(cod_pais, cod_ciudad);
 	}
-
+	
+	
+	
+	
 	
 
+	
+	
+	
+	
 }
