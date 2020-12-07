@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+	<!-- Menu -->
+	<h:form>
+		<p:growl id="messages" showDetail="true" />
+		<p:menuButton value="INTERACTUAPP">
+			<p:menuitem value="Home" url="menu_inicio_admin.xhtml"
+				icon="pi pi-home" />
+		</p:menuButton>
+	</h:form>
+	<h:form id="formTercero">
+		<p:growl id="messages" showDetail="true" />
+		<!-- Barra herramientas opciones registro -->
+		<p:toolbar>
+			<f:facet name="right">
+				<p:commandButton value="GLOBALES" icon="pi pi-folder-open"
+					process="@this"
+					actionListener="#{ctGeneralTerceroController.verGlobales()}"
+					update=":formTercero:messages" />
+				<p:commandButton value="Guardar" icon="pi pi-folder-open"
+					process="@this :formTercero:gridTercero"
+					actionListener="#{ctGeneralTerceroController.saveTercero()}"
+					update=":formTercero:messages :formTercero:gridTercero :formTercero:dtTercero" />
+				<p:commandButton value="Editar" icon="pi pi-folder-open"
+					process="@this"
+					actionListener="#{ctGeneralTerceroController.editTercero()}"
+					update=":formTercero:messages :formTercero:gridTercero" />
+				<p:commandButton value="Eliminar" icon="pi pi-folder-open"
+					process="@this"
+					actionListener="#{ctGeneralTerceroController.deleteTercero()}"
+					update=":formTercero:messages :formTercero:gridTercero :formTercero:dtTercero" />
+			</f:facet>
+		</p:toolbar>
+		<p:panelGrid id="gridTercero" columns="4" layout="grid">
+			<p:outputLabel value="Tipo" for="tip_docum" />
+			<p:selectOneMenu id="tip_docum"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.id.tipDocum}"
+				required="true">
+				<f:selectItem itemLabel="Cedula"  temValue="CC" />
+				<f:selectItem itemLabel="Pasaporte" itemValue="PAS" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Documento" for="cod_docum" />
+			<p:inputText id="cod_docum" required="true" maxlength="20"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.id.codDocum}" />
+			<p:outputLabel value="Sexo" for="mca_sexo" />
+			<p:selectOneMenu id="mca_sexo"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.mcaSexo}"
+				required="false">
+				<f:selectItem itemLabel="Femenino" itemValue="F" />
+				<f:selectItem itemLabel="Masculino" itemValue="M" />
+			</p:selectOneMenu>
+			<p:outputLabel value="nombre" for="nom_tercero" />
+			<p:inputText id="nom_tercero" required="true" maxlength="90"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.nomTercero}" />
+			<p:outputLabel value="apellido" for="apellido_tercero" />
+			<p:inputText id="apellido_tercero" required="true" maxlength="90"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.apellidoTercero}" />
+
+			<p:outputLabel for="fec_nacimiento" value="Fecha Nacimiento" />
+			<p:calendar id="fec_nacimiento" value="#{ctGeneralTerceroController.ctGeneralTercero.fecNacimiento}" locale="es"
+				navigator="true"  />
+
+			<p:outputLabel value="Ocupacion" for="cod_profesion" />
+			<p:selectOneMenu id="cod_profesion"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.codProfesion}"
+				required="false">
+				<f:selectItem itemLabel="Seleccione Ocupacion" itemValue="" noSelectionOption="true" />
+				<f:selectItems value="#{ctGeneralTerceroController.gaProfesiones}" var="profesion" itemLabel="#{profesion.nomProfesion}" itemValue="#{profesion.codProfesion}"/>
+			</p:selectOneMenu>
+			<p:outputLabel value="Tipo Domicilio" for="tip_domicilio" />
+			<p:selectOneMenu id="tip_domicilio"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.tipDomicilio}"
+				required="false">
+				<f:selectItem itemLabel="Residencial" itemValue="1" />
+				<f:selectItem itemLabel="Comercial" itemValue="2" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Departamento" for="cod_estado" />
+			<p:selectOneMenu id="cod_estado"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.codEstado}"
+				required="false">
+				<p:ajax listener="#{ctGeneralTerceroController.onCodEstadoChange}" update="cod_prov" />
+                <f:selectItem itemLabel="Seleccione Depto" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{ctGeneralTerceroController.gaEstados}" var="estado" itemLabel="#{estado.nomEstado}" itemValue="#{estado.id.codEstado}"/>
+			</p:selectOneMenu>
+			<p:outputLabel value="Ciudad" for="cod_prov" />
+			<p:selectOneMenu id="cod_prov"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.codProv}"
+				required="false">
+				<p:ajax listener="#{ctGeneralTerceroController.onCodProvChange}" update="cod_localidad" />
+                <f:selectItem itemLabel="Seleccione Ciudad" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{ctGeneralTerceroController.gaCiudades}" var="ciudad" itemLabel="#{ciudad.nomCiudad}" itemValue="#{ciudad.id.codCiudad}"/>
+			</p:selectOneMenu>
+			<p:outputLabel value="Barrio" for="cod_localidad" />
+			<p:selectOneMenu id="cod_localidad"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.codLocalidad}"
+				required="false">
+				<f:selectItem itemLabel="Seleccione Barrio" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{ctGeneralTerceroController.gaLocalidades}" var="barrio" itemLabel="#{barrio.nomLocalidad}" itemValue="#{barrio.id.codLocalidad}"/>
+			</p:selectOneMenu>
+			<p:outputLabel value="direccion" for="domicilio1" />
+			<p:inputText id="domicilio1" required="true" maxlength="20"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.id.codDocum}" />
+			<p:outputLabel value="telefono" for="tlf_numero" />
+			<p:inputText id="tlf_numero" required="true" maxlength="20"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.tlfNumero}" />
+		</p:panelGrid>
+		<p:dataTable id="dtTercero"
+			value="#{ctGeneralTerceroController.ctGeneralTerceros}"
+			style="font-size:12px;" var="tercero" rowKey="#{tercero.id.codDocum}"
+			selectionMode="single" emptyMessage="No existe usuarios de sistema">
+			<f:facet name="header">
+				<p:outputLabel value="Usuarios INTACTUAPP" />
+			</f:facet>
+			<p:ajax event="rowSelect"
+				listener="#{ctGeneralTerceroController.selectCtTercero}" />
+
+			<p:column headerText="Tipo">
+				<h:outputText value="#{tercero.id.tipDocum}" />
+			</p:column>
+
+			<p:column headerText="Documento">
+				<h:outputText value="#{tercero.id.codDocum}" />
+			</p:column>
+
+			<p:column headerText="Nombre">
+				<h:outputText value="#{tercero.nomTercero}" />
+			</p:column>
+
+			<p:column headerText="Apellido">
+				<h:outputText value="#{tercero.apellidoTercero}" />
+			</p:column>
+
+			<p:column headerText="Nacimiento">
+				<h:outputText value="#{tercero.fecNacimiento}" />
+			</p:column>
+
+			<p:column headerText="Ocupacion">
+				<h:outputText value="#{tercero.codProfesion}" />
+			</p:column>
+
+			<p:column headerText="Tipo Dom">
+				<h:outputText value="#{tercero.tipDomicilio}" />
+			</p:column>
+
+			<p:column headerText="Dep">
+				<h:outputText value="#{tercero.codEstado}" />
+			</p:column>
+
+			<p:column headerText="Dep">
+				<h:outputText value="#{tercero.codEstado}" />
+			</p:column>
+
+			<p:column headerText="Ciud">
+				<h:outputText value="#{tercero.codProv}" />
+			</p:column>
+
+			<p:column headerText="Barrio">
+				<h:outputText value="#{tercero.codLocalidad}" />
+			</p:column>
+
+			<p:column headerText="Direccion">
+				<h:outputText value="#{tercero.domicilio1}" />
+			</p:column>
+
+			<p:column headerText="Tel">
+				<h:outputText value="#{tercero.tlfNumero}" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

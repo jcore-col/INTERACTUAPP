@@ -46,7 +46,7 @@ public class GaCiudadRepositoryImpl implements GaCiudadRepository,Serializable{
 	public List<GaCiudad> devCiudadPorPaisYEstado(String p_cod_pais, String p_cod_estado) throws Exception {
 		// TODO Auto-generated method stub
 		return em.createQuery("SELECT a FROM GaCiudad a "
-				+ "WHERE a.codPais = ? 1 AND a.codEstado = ?2",GaCiudad.class)
+				+ "WHERE a.id.codPais = ? 1 AND a.id.codEstado = ?2",GaCiudad.class)
 				.setParameter(1, p_cod_pais).setParameter(2, p_cod_estado).getResultList();
 	}
 	

@@ -12,7 +12,6 @@ import org.primefaces.event.SelectEvent;
 
 import com.jcore.model.entity.GaUsrGroupMember;
 import com.jcore.service_interface.GaUsrGroupMemberCrudService;
-import com.jcore.utils.Ga_Gbl_Var;
 import com.jcore.utils.Message;
 @Named
 @ViewScoped

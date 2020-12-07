@@ -31,13 +31,13 @@ public class CtGeneralTercero implements Serializable {
 	private String codEstCivil;
 
 	@Column(name="cod_estado")
-	private int codEstado;
+	private String codEstado;
 
 	@Column(name="cod_idioma")
 	private String codIdioma;
 
 	@Column(name="cod_localidad")
-	private int codLocalidad;
+	private String codLocalidad;
 
 	@Column(name="cod_pais")
 	private String codPais;
@@ -49,7 +49,7 @@ public class CtGeneralTercero implements Serializable {
 	private int codProfesion;
 
 	@Column(name="cod_prov")
-	private int codProv;
+	private String codProv;
 
 	@Column(name="cod_tercero")
 	private int codTercero;
@@ -149,11 +149,11 @@ public class CtGeneralTercero implements Serializable {
 		this.codEstCivil = codEstCivil;
 	}
 
-	public int getCodEstado() {
+	public String getCodEstado() {
 		return this.codEstado;
 	}
 
-	public void setCodEstado(int codEstado) {
+	public void setCodEstado(String codEstado) {
 		this.codEstado = codEstado;
 	}
 
@@ -165,11 +165,11 @@ public class CtGeneralTercero implements Serializable {
 		this.codIdioma = codIdioma;
 	}
 
-	public int getCodLocalidad() {
+	public String getCodLocalidad() {
 		return this.codLocalidad;
 	}
 
-	public void setCodLocalidad(int codLocalidad) {
+	public void setCodLocalidad(String codLocalidad) {
 		this.codLocalidad = codLocalidad;
 	}
 
@@ -197,11 +197,11 @@ public class CtGeneralTercero implements Serializable {
 		this.codProfesion = codProfesion;
 	}
 
-	public int getCodProv() {
+	public String getCodProv() {
 		return this.codProv;
 	}
 
-	public void setCodProv(int codProv) {
+	public void setCodProv(String codProv) {
 		this.codProv = codProv;
 	}
 

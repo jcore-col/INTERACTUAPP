@@ -56,7 +56,7 @@ public class GaEstadoRepositoryImpl implements GaEstadoRepository,Serializable{
 	public List<GaEstado> devEstadosPorPais(String p_cod_pais) throws Exception {
 		// TODO Auto-generated method stub
 		return em.createQuery("SELECT a FROM GaEstado a "
-				+ "WHERE a.codPais = ?1",GaEstado.class)
+				+ "WHERE a.id.codPais = ?1",GaEstado.class)
 				.setParameter(1, p_cod_pais).getResultList();
 	}
 	

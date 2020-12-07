@@ -12,7 +12,6 @@ import org.primefaces.event.SelectEvent;
 
 import com.jcore.model.entity.GaUsrProperty;
 import com.jcore.service_interface.GaUsrPropertyCrudService;
-import com.jcore.utils.Ga_Gbl_Var;
 import com.jcore.utils.Message;
 
 @Named

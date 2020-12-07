@@ -51,15 +51,15 @@ public class CtGeneralTerceroService implements CtGeneralTerceroCrudService, Ser
 	}
 
 	@Override
-	public List<CtGeneralTercero> devuelvePersonasPorUsr(int p_cod_compania, String p_cod_usr) throws Exception {
+	public List<CtGeneralTercero> devuelvePersonasPorUsr(int p_cod_compania,int p_cod_campaign, String p_cod_usr) throws Exception {
 		// TODO Auto-generated method stub
-		return this.ctGeneralTerceroRepository.devuelvePersonasPorUsr(p_cod_compania, p_cod_usr);
+		return this.ctGeneralTerceroRepository.devuelvePersonasPorUsr(p_cod_compania,p_cod_campaign, p_cod_usr);
 	}
 
 	@Override
-	public List<CtGeneralTercero> devuelvePersonasPorCia(int p_cod_compania) throws Exception {
+	public List<CtGeneralTercero> devuelvePersonasPorCia(int p_cod_compania,int p_cod_campaign) throws Exception {
 		// TODO Auto-generated method stub
-		return this.ctGeneralTerceroRepository.devuelvePersonasPorCia(p_cod_compania);
+		return this.ctGeneralTerceroRepository.devuelvePersonasPorCia(p_cod_compania, p_cod_campaign);
 	}
 
 	@Override

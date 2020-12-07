@@ -56,7 +56,7 @@ public class GaLocalidadRepositoryImpl implements GaLocalidadRepository,Serializ
 	public List<GaLocalidad> devLocalidadesPorCiudad(String cod_pais, String cod_ciudad) throws Exception {
 		// TODO Auto-generated method stub
 		return em.createQuery("SELECT a FROM GaLocalidad a "
-				+ "WHERE a.codPais = ?1 and a.codCiudad = ?2",GaLocalidad.class)
+				+ "WHERE a.id.codPais = ?1 and a.id.codCiudad = ?2",GaLocalidad.class)
 				.setParameter(1, cod_pais)
 				.setParameter(2, cod_ciudad).getResultList();
 	}

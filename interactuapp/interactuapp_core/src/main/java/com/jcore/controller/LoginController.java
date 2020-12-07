@@ -4,17 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
-import javax.servlet.jsp.el.ELParseException;
 
-import org.primefaces.context.RequestContext;
-import org.primefaces.event.SelectEvent;
-import org.primefaces.expression.impl.ThisExpressionResolver;
 
 import com.jcore.constantes_sistema.Ga;
 import com.jcore.model.entity.GaAccessControl;
@@ -23,7 +17,6 @@ import com.jcore.model.entity.GaUsrProperty;
 import com.jcore.service_interface.GaAccessControlCrudService;
 import com.jcore.service_interface.GaUserCrudService;
 import com.jcore.service_interface.GaUsrPropertyCrudService;
-import com.jcore.utils.Ga_Gbl_Var;
 import com.jcore.utils.GlobalSession;
 import com.jcore.utils.Message;
 
@@ -113,6 +106,7 @@ public class LoginController implements Serializable {
 					if (this.gaAccessControl.size() > 1)
 					{
 						this.navigationCase = this.navigationCase + "1";
+						GlobalSession.asignaGlobal("rol_usr", "ADMIN");
 					}
 					else
 					{
@@ -121,6 +115,15 @@ public class LoginController implements Serializable {
 							for (GaAccessControl e : this.gaAccessControl)
 							{
 								this.navigationCase = this.navigationCase + e.getId().getCodRol();
+								
+								if (e.getId().getCodRol() == "1")
+								{
+									GlobalSession.asignaGlobal("rol_usr", "ADMIN");
+								}
+								else
+								{
+									GlobalSession.asignaGlobal("rol_usr", "LIDER");
+								}
 							}
 						}
 						
@@ -143,14 +146,14 @@ public class LoginController implements Serializable {
 			{
 				Message.registra_Info("Contrasena invalida");
 				resetForm();
-				return null;
+				return "action_login_logout";
 			}
 		}
 		else
 		{
 			Message.registra_Info("Debe ingresar credenciales");
 			resetForm();
-			return  null;
+			return  "action_login_logout";
 		}
 	}
 

@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.jcore.constantes_sistema.Ga;
-import com.jcore.model.entity.GaUser;
 import com.jcore.model.entity.GaUsrProperty;
 import com.jcore.repository.GaUsrPropertyRepository;
 
