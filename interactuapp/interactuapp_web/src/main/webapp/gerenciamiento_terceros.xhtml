@@ -11,8 +11,6 @@
 	<h:form>
 		<p:growl id="messages" showDetail="true" />
 		<p:menuButton value="INTERACTUAPP">
-			<p:menuitem value="Home" url="menu_inicio_admin.xhtml"
-				icon="pi pi-home" />
 		</p:menuButton>
 	</h:form>
 	<h:form id="formTercero">
@@ -43,7 +41,7 @@
 			<p:selectOneMenu id="tip_docum"
 				value="#{ctGeneralTerceroController.ctGeneralTercero.id.tipDocum}"
 				required="true">
-				<f:selectItem itemLabel="Cedula"  temValue="CC" />
+				<f:selectItem itemLabel="Cedula" itemValue="CC" />
 				<f:selectItem itemLabel="Pasaporte" itemValue="PAS" />
 			</p:selectOneMenu>
 			<p:outputLabel value="Documento" for="cod_docum" />
@@ -64,15 +62,19 @@
 				value="#{ctGeneralTerceroController.ctGeneralTercero.apellidoTercero}" />
 
 			<p:outputLabel for="fec_nacimiento" value="Fecha Nacimiento" />
-			<p:calendar id="fec_nacimiento" value="#{ctGeneralTerceroController.ctGeneralTercero.fecNacimiento}" locale="es"
-				navigator="true"  />
+			<p:calendar id="fec_nacimiento"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.fecNacimiento}"
+				locale="es" navigator="true" />
 
 			<p:outputLabel value="Ocupacion" for="cod_profesion" />
 			<p:selectOneMenu id="cod_profesion"
 				value="#{ctGeneralTerceroController.ctGeneralTercero.codProfesion}"
 				required="false">
-				<f:selectItem itemLabel="Seleccione Ocupacion" itemValue="" noSelectionOption="true" />
-				<f:selectItems value="#{ctGeneralTerceroController.gaProfesiones}" var="profesion" itemLabel="#{profesion.nomProfesion}" itemValue="#{profesion.codProfesion}"/>
+				<f:selectItem itemLabel="Seleccione Ocupacion" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{ctGeneralTerceroController.gaProfesiones}"
+					var="profesion" itemLabel="#{profesion.nomProfesion}"
+					itemValue="#{profesion.codProfesion}" />
 			</p:selectOneMenu>
 			<p:outputLabel value="Tipo Domicilio" for="tip_domicilio" />
 			<p:selectOneMenu id="tip_domicilio"
@@ -85,28 +87,39 @@
 			<p:selectOneMenu id="cod_estado"
 				value="#{ctGeneralTerceroController.ctGeneralTercero.codEstado}"
 				required="false">
-				<p:ajax listener="#{ctGeneralTerceroController.onCodEstadoChange}" update="cod_prov" />
-                <f:selectItem itemLabel="Seleccione Depto" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{ctGeneralTerceroController.gaEstados}" var="estado" itemLabel="#{estado.nomEstado}" itemValue="#{estado.id.codEstado}"/>
+				<p:ajax listener="#{ctGeneralTerceroController.onCodEstadoChange}"
+					update="cod_prov" />
+				<f:selectItem itemLabel="Seleccione Depto" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{ctGeneralTerceroController.gaEstados}"
+					var="estado" itemLabel="#{estado.nomEstado}"
+					itemValue="#{estado.id.codEstado}" />
 			</p:selectOneMenu>
 			<p:outputLabel value="Ciudad" for="cod_prov" />
 			<p:selectOneMenu id="cod_prov"
 				value="#{ctGeneralTerceroController.ctGeneralTercero.codProv}"
 				required="false">
-				<p:ajax listener="#{ctGeneralTerceroController.onCodProvChange}" update="cod_localidad" />
-                <f:selectItem itemLabel="Seleccione Ciudad" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{ctGeneralTerceroController.gaCiudades}" var="ciudad" itemLabel="#{ciudad.nomCiudad}" itemValue="#{ciudad.id.codCiudad}"/>
+				<p:ajax listener="#{ctGeneralTerceroController.onCodProvChange}"
+					update="cod_localidad" />
+				<f:selectItem itemLabel="Seleccione Ciudad" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{ctGeneralTerceroController.gaCiudades}"
+					var="ciudad" itemLabel="#{ciudad.nomCiudad}"
+					itemValue="#{ciudad.id.codCiudad}" />
 			</p:selectOneMenu>
 			<p:outputLabel value="Barrio" for="cod_localidad" />
 			<p:selectOneMenu id="cod_localidad"
 				value="#{ctGeneralTerceroController.ctGeneralTercero.codLocalidad}"
 				required="false">
-				<f:selectItem itemLabel="Seleccione Barrio" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{ctGeneralTerceroController.gaLocalidades}" var="barrio" itemLabel="#{barrio.nomLocalidad}" itemValue="#{barrio.id.codLocalidad}"/>
+				<f:selectItem itemLabel="Seleccione Barrio" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{ctGeneralTerceroController.gaLocalidades}"
+					var="barrio" itemLabel="#{barrio.nomLocalidad}"
+					itemValue="#{barrio.id.codLocalidad}" />
 			</p:selectOneMenu>
 			<p:outputLabel value="direccion" for="domicilio1" />
-			<p:inputText id="domicilio1" required="true" maxlength="20"
-				value="#{ctGeneralTerceroController.ctGeneralTercero.id.codDocum}" />
+			<p:inputText id="domicilio1" required="true" maxlength="40"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.domicilio1}" />
 			<p:outputLabel value="telefono" for="tlf_numero" />
 			<p:inputText id="tlf_numero" required="true" maxlength="20"
 				value="#{ctGeneralTerceroController.ctGeneralTercero.tlfNumero}" />
@@ -147,10 +160,6 @@
 
 			<p:column headerText="Tipo Dom">
 				<h:outputText value="#{tercero.tipDomicilio}" />
-			</p:column>
-
-			<p:column headerText="Dep">
-				<h:outputText value="#{tercero.codEstado}" />
 			</p:column>
 
 			<p:column headerText="Dep">

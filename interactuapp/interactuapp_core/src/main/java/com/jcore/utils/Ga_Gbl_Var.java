@@ -8,10 +8,7 @@ public class Ga_Gbl_Var {
 	
 	public static Date getFecActual()
 	{
-		java.util.Date date = new java.util.Date();
-		java.sql.Date  sqlDate;
-		sqlDate = new java.sql.Date(date.getYear(),date.getMonth(),date.getDay());
-		return sqlDate;
+		return  new java.sql.Date(new java.util.Date().getTime());
 	}
 	
 	public static void asigna (String p_cod_global, Object p_val_global )

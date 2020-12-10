@@ -59,6 +59,13 @@ public class CtLogPersonRegistryService implements CtLogPersonRegistryCrudServic
 		// TODO Auto-generated method stub
 		return this.ctLogPersonRegistryRepository.buscarPorCodDocum(p_cod_compania, p_cod_campaign, p_tip_docum, p_cod_docum);
 	}
+
+	@Override
+	public CtLogPersonRegistry buscarPersonaPorUsr(int p_cod_compania, int p_cod_campaign, String p_tip_docum,
+			String p_cod_docum, String p_cod_usr) throws Exception {
+		// TODO Auto-generated method stub
+		return this.ctLogPersonRegistryRepository.buscarPersonaPorUsr(p_cod_compania, p_cod_campaign, p_tip_docum, p_cod_docum, p_cod_usr);
+	}
 	
 	
 	

@@ -24,6 +24,7 @@ import com.jcore.service_interface.GaCiudadCrudService;
 import com.jcore.service_interface.GaEstadoCrudService;
 import com.jcore.service_interface.GaLocalidadCrudService;
 import com.jcore.service_interface.GaProfesionCrudService;
+import com.jcore.utils.Ga_Gbl_Var;
 import com.jcore.utils.GlobalSession;
 import com.jcore.utils.Message;
 
@@ -138,7 +139,7 @@ public class CtGeneralTerceroController implements Serializable{
 			CtLogPersonRegistry auxLogPersonRegistry;
 			CtGeneralTercero auxGeneralTercero;
 			
-			
+			this.ctGeneralTercero.getId().setFecValidez(Ga_Gbl_Var.getFecActual());
 			
 			try
 			{
@@ -151,6 +152,9 @@ public class CtGeneralTerceroController implements Serializable{
 			
 			this.ctGeneralTercero.setCodUsr(this.g_cod_usr);
 			this.ctGeneralTercero.setFecActu(this.ctGeneralTercero.getId().getFecValidez());
+			this.ctGeneralTercero.setMcaInh(Ga.NOT);
+			this.ctGeneralTercero.getId().setCodActTercero(1);
+			this.ctGeneralTercero.getId().setCodCompania(this.g_cod_compania);
 			
 			if (auxGeneralTercero == null)//ojo qUE PUEDE ESTAR INHABILITADO EL TERCERO
 			{
@@ -158,8 +162,10 @@ public class CtGeneralTerceroController implements Serializable{
 				boolean insertoTerceroCorrecto = false;
 				boolean updateTerceroInhaCorrecto = false; 
 				
+				
 				try
 				{
+					
 					this.ctGeneralTerceroCrudService.insert(this.ctGeneralTercero);
 					insertoTerceroCorrecto = true;
 				}
@@ -189,7 +195,7 @@ public class CtGeneralTerceroController implements Serializable{
 						auxLogPersonRegistry = null;
 					}
 					
-					if ((auxLogPersonRegistry == null) || (updateTerceroInhaCorrecto) )
+					if (auxLogPersonRegistry == null )// solo se inserta en el primer usuario que ingreso esa cedula.
 					{
 						auxLogPersonRegistry = new CtLogPersonRegistry();
 						auxLogPersonRegistry.setFecActu(this.ctGeneralTercero.getFecActu());
@@ -221,17 +227,58 @@ public class CtGeneralTerceroController implements Serializable{
 			else//EXISTE UN TERCERO VIGENTE EN ESTE MOMENTO
 			{
 				// se hace update de ser nesesario
-				try
+				if (this.g_rol_usr.equals("ADMIN"))//SI ES ADMIN PERMITE MODIFICAR CUALQUIER TERCERO
 				{
-					//si no falla el insert es porque la fecha de validez del registro es nueva
+					try
+					{
+						//si no falla el insert es porque la fecha de validez del registro es nueva
+						
+						this.ctGeneralTerceroCrudService.insert(this.ctGeneralTercero);
+					}
+					catch(Exception e)
+					{
+						//si llegara a existe ya un registro con la fecha validez de hoy se hace update
+						this.ctGeneralTerceroCrudService.update(this.ctGeneralTercero);
+					}
+				}
+				else
+				{
+					//SOLO DEBE PERMITIR MODIFICAR LOS QUE EL LIDER HAYA CREADO NINGUNO OTRO
+					CtLogPersonRegistry auxPersonRegistry;
+					try
+					{
+						auxPersonRegistry = this.ctLogPersonRegistryCrudService.buscarPersonaPorUsr(this.g_cod_compania, this.g_cod_campaing, 
+																									auxGeneralTercero.getId().getTipDocum(), 
+																									auxGeneralTercero.getId().getCodDocum(), this.g_cod_usr);
+					}
+					catch(Exception e)
+					{
+						auxPersonRegistry = null;
+					}
 					
-					this.ctGeneralTerceroCrudService.insert(this.ctGeneralTercero);
+					if (auxPersonRegistry != null)
+					{
+						//esta persona si la registro este usuario... debe permitir ponerla vigente de nuevo o modificarla
+						try
+						{
+							//si no falla el insert es porque la fecha de validez del registro es nueva
+							
+							this.ctGeneralTerceroCrudService.insert(this.ctGeneralTercero);
+						}
+						catch(Exception e)
+						{
+							//si llegara a existe ya un registro con la fecha validez de hoy se hace update
+							this.ctGeneralTerceroCrudService.update(this.ctGeneralTercero);
+						}
+					}
+					else
+					{
+						// no debe permitir cambiar nada con esta cedula
+						Message.registra_Info("PERSONA REGISTRADA POR OTRO LIDER NO PUEDES HACER CAMBIOS");
+					}
+					
 				}
-				catch(Exception e)
-				{
-					//si llegara a existe ya un registro con la fecha validez de hoy se hace update
-					this.ctGeneralTerceroCrudService.update(this.ctGeneralTercero);
-				}
+				
 			}
 		
 			

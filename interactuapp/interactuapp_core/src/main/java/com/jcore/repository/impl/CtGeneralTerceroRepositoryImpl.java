@@ -44,15 +44,15 @@ public class CtGeneralTerceroRepositoryImpl implements CtGeneralTerceroRepositor
 	public List<CtGeneralTercero> devuelvePersonasPorUsr(int p_cod_compania,int p_cod_campaign, String p_cod_usr) throws Exception {
 		// TODO Auto-generated method stub
 		return em.createQuery("SELECT a FROM CtGeneralTercero a "
-				+ "INNER JOIN CtLogPersonRegistry c ON c.codCompania = a.codCompania "
-				+ "AND c.tipDocum = a.tipDocum AND c.codDocum = a.codDocum "
-				+ "WHERE a.codCompania = ?1 AND a.codActTercero = 1 "
-				+ "AND c.codUsr = ?2 "
-				+ "AND c.codCampaign = ?3 "
+				+ "INNER JOIN CtLogPersonRegistry c ON c.id.codCompania = a.id.codCompania " 
+				+ " AND c.id.tipDocum = a.id.tipDocum AND c.id.codDocum = a.id.codDocum "
+				+ "WHERE a.id.codCompania = ?1 AND a.id.codActTercero = 1 "
+				+ "AND c.id.codUsr = ?2 "
+				+ "AND c.id.codCampaign = ?3 "
 				+ "AND a.mcaInh = 'N' "
-				+ "AND a.fecValidez = (SELECT MAX(b.fecValidez) FROM CtGeneralTercero b "
-				+ "WHERE b.codCompania = a.codCompania AND b.tipDocum = a.tipDocum AND b.codDocum = a.codDocum "
-				+ "AND b.codActTercero = a.codActTercero)",CtGeneralTercero.class)
+				+ "AND a.id.fecValidez = (SELECT MAX(b.id.fecValidez) FROM CtGeneralTercero b "
+				+ "WHERE b.id.codCompania = a.id.codCompania AND b.id.tipDocum = a.id.tipDocum AND b.id.codDocum = a.id.codDocum "
+				+ "AND b.id.codActTercero = a.id.codActTercero)",CtGeneralTercero.class)
 				.setParameter(1, p_cod_compania)
 				.setParameter(2, p_cod_usr)
 				.setParameter(3, p_cod_campaign)
@@ -80,12 +80,12 @@ public class CtGeneralTerceroRepositoryImpl implements CtGeneralTerceroRepositor
 	public CtGeneralTercero devuelvePersonaPorDocum(int p_cod_compania, String p_tip_docum, String p_cod_docum) throws Exception {
 		// TODO Auto-generated method stub
 		return em.createQuery("SELECT a FROM CtGeneralTercero a "
-				+ "WHERE a.codCompania = ?1 and a.tipDocum = ?2 "
-				+ "AND a.codDocum = ?3 AND a.codActTercero = 1 "
+				+ "WHERE a.id.codCompania = ?1 and a.id.tipDocum = ?2 "
+				+ "AND a.id.codDocum = ?3 AND a.id.codActTercero = 1 "
 				+ "AND a.mcaInh = 'N' "
-				+ "AND a.fecValidez = (SELECT MAX(b.fecValidez) FROM CtGeneralTercero b "
-				+ "WHERE b.codCompania = a.codCompania AND b.tipDocum = a.tipDocum AND b.codDocum = a.codDocum "
-				+ "AND b.codActTercero = a.codActTercero)",CtGeneralTercero.class)
+				+ "AND a.id.fecValidez = (SELECT MAX(b.id.fecValidez) FROM CtGeneralTercero b "
+				+ "WHERE b.id.codCompania = a.id.codCompania AND b.id.tipDocum = a.id.tipDocum AND b.id.codDocum = a.id.codDocum "
+				+ "AND b.id.codActTercero = a.id.codActTercero)",CtGeneralTercero.class)
 				.setParameter(1, p_cod_compania)
 				.setParameter(2, p_tip_docum)
 				.setParameter(3, p_cod_docum)

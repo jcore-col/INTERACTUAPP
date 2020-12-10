@@ -107,6 +107,7 @@ public class CtGeneralTercero implements Serializable {
 	private String tlfPais;
 
 	public CtGeneralTercero() {
+		this.id = new CtGeneralTerceroPK();
 	}
 
 	public CtGeneralTerceroPK getId() {
