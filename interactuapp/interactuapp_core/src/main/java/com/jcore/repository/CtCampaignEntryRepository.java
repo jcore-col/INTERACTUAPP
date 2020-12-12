@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.List;
 
 import com.jcore.model.entity.CtCampaignEntry;
-import com.jcore.model.entity.CtCampaignEntryPK;
 
 public interface CtCampaignEntryRepository extends JpaRepository<CtCampaignEntry>{
 
@@ -15,4 +14,6 @@ public interface CtCampaignEntryRepository extends JpaRepository<CtCampaignEntry
 	public int next_secu_entry_day(int p_cod_compania
 								  ,int p_cod_campaign
 								  ,Date p_fec_entry) throws Exception;
+	
+	public List<CtCampaignEntry> devCampaignsEntry(int p_cod_compania, int p_cod_campaign) throws Exception;
 }

@@ -36,6 +36,7 @@ public class CtInteractionLogEntry implements Serializable {
 	private Date fecEntryReg;
 
 	public CtInteractionLogEntry() {
+		this.id = new CtInteractionLogEntryPK();
 	}
 
 	public CtInteractionLogEntryPK getId() {

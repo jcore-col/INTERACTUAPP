@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="public List&lt;GaEstado&gt; getGaEstados() {"/>
 			<item value="validez"/>
 			<item value="fec_validez"/>
 			<item value="tlf_numero"/>

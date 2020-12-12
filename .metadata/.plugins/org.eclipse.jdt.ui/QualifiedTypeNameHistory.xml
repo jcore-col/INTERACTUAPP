@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.annotation.ManagedBean"/>
-<fullyQualifiedTypeName name="javax.ejb.EJB"/>
-<fullyQualifiedTypeName name="java.io.Serializable"/>
-<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-<fullyQualifiedTypeName name="java.text.DateFormat"/>
-<fullyQualifiedTypeName name="java.time.LocalDate"/>
-<fullyQualifiedTypeName name="java.sql.DataTruncation"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="com.jcore.service_interface.GaUsrPropertyCrudService"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaUsrProperty"/>
@@ -59,5 +52,12 @@
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaCiudad"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaLocalidad"/>
 <fullyQualifiedTypeName name="javax.faces.view.ViewScoped"/>
+<fullyQualifiedTypeName name="com.jcore.service_interface.CrudService"/>
+<fullyQualifiedTypeName name="com.jcore.model.entity.CtInteractionLogEntry"/>
+<fullyQualifiedTypeName name="com.jcore.repository.CtCampaignEntryRepository"/>
+<fullyQualifiedTypeName name="com.jcore.service_interface.CtInteractionLogEntryCrudService"/>
+<fullyQualifiedTypeName name="com.jcore.repository.CtInteractionLogEntryRepository"/>
+<fullyQualifiedTypeName name="com.jcore.service_interface.CtCampaignEntryCrudService"/>
+<fullyQualifiedTypeName name="com.jcore.model.entity.CtCampaignEntry"/>
 <fullyQualifiedTypeName name="com.jcore.utils.Ga_Gbl_Var"/>
 </qualifiedTypeNameHistroy>
