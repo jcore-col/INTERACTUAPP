@@ -18,10 +18,6 @@ public class CtInteractionLogEntryPK implements Serializable {
 	@Column(name="cod_campaign")
 	private int codCampaign;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="fec_entry")
-	private java.util.Date fecEntry;
-
 	@Column(name="num_secu_entry_day")
 	private int numSecuEntryDay;
 
@@ -44,12 +40,6 @@ public class CtInteractionLogEntryPK implements Serializable {
 	}
 	public void setCodCampaign(int codCampaign) {
 		this.codCampaign = codCampaign;
-	}
-	public java.util.Date getFecEntry() {
-		return this.fecEntry;
-	}
-	public void setFecEntry(java.util.Date fecEntry) {
-		this.fecEntry = fecEntry;
 	}
 	public int getNumSecuEntryDay() {
 		return this.numSecuEntryDay;
@@ -81,7 +71,6 @@ public class CtInteractionLogEntryPK implements Serializable {
 		return 
 			(this.codCompania == castOther.codCompania)
 			&& (this.codCampaign == castOther.codCampaign)
-			&& this.fecEntry.equals(castOther.fecEntry)
 			&& (this.numSecuEntryDay == castOther.numSecuEntryDay)
 			&& this.tipDocum.equals(castOther.tipDocum)
 			&& this.codDocum.equals(castOther.codDocum);
@@ -92,7 +81,6 @@ public class CtInteractionLogEntryPK implements Serializable {
 		int hash = 17;
 		hash = hash * prime + this.codCompania;
 		hash = hash * prime + this.codCampaign;
-		hash = hash * prime + this.fecEntry.hashCode();
 		hash = hash * prime + this.numSecuEntryDay;
 		hash = hash * prime + this.tipDocum.hashCode();
 		hash = hash * prime + this.codDocum.hashCode();

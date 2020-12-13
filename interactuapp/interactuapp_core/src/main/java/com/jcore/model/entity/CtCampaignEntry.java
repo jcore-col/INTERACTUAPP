@@ -49,6 +49,10 @@ public class CtCampaignEntry implements Serializable {
 	@Column(name="fec_actu")
 	private Date fecActu;
 
+	@Temporal(TemporalType.DATE)
+	@Column(name="fec_entry")
+	private Date fecEntry;
+
 	@Column(name="mca_inh")
 	private String mcaInh;
 
@@ -65,6 +69,7 @@ public class CtCampaignEntry implements Serializable {
 	private String tipSituacion;
 
 	public CtCampaignEntry() {
+		this.id = new CtCampaignEntryPK();
 	}
 
 	public CtCampaignEntryPK getId() {
@@ -161,6 +166,14 @@ public class CtCampaignEntry implements Serializable {
 
 	public void setFecActu(Date fecActu) {
 		this.fecActu = fecActu;
+	}
+
+	public Date getFecEntry() {
+		return this.fecEntry;
+	}
+
+	public void setFecEntry(Date fecEntry) {
+		this.fecEntry = fecEntry;
 	}
 
 	public String getMcaInh() {

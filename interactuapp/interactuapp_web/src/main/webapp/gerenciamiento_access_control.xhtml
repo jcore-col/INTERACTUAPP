@@ -10,14 +10,14 @@
 	<!-- Menu -->
 	<h:form>
 		<p:growl id="messages" showDetail="true" />
-		<p:menuButton value="INTERACTUAPP">
+		<p:menuButton value="INTERACTUAPP" style="background-color:#C8DEFF;">
 			<p:menuitem value="Home" url="menu_inicio_admin.xhtml" icon="pi pi-home" />
 		</p:menuButton>
 	</h:form>
 	<h:form id="formUser">
 		<p:growl id="messages" showDetail="true" />
 		<!-- Barra herramientas opciones registro -->
-		<p:toolbar>
+		<p:toolbar style="background-color:#C8DEFF;">
 			<f:facet name="right">
 				<p:outputLabel value="Codigo usuario" for="codUsrSearch" />
 				<p:inputText id="codUsrSearch" required="false" maxlength="10"
@@ -58,7 +58,7 @@
 		</p:panelGrid>
 		<p:dataTable id="dtUser"
 			value="#{gaAccessControlController.gaAccessControlByUsr}"
-			style="font-size:12px;" var="user" rowKey="#{user.id.codUsr}"
+			style="font-size:12px;" tableStyle="table-layout: auto;"  var="user" rowKey="#{user.id.codUsr}"
 			selectionMode="single" emptyMessage="No existe usuarios de sistema">
 			<f:facet name="header">
 				<p:outputLabel value="Usuarios INTACTUAPP" />

@@ -45,7 +45,7 @@ public class CtCampaignEntryService implements CtCampaignEntryCrudService, Seria
 	@Override
 	public CtCampaignEntry findById(CtCampaignEntry t) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return this.ctCampaignEntryRepository.findById(t);
 	}
 
 	@Override
@@ -62,9 +62,9 @@ public class CtCampaignEntryService implements CtCampaignEntryCrudService, Seria
 	}
 
 	@Override
-	public int next_secu_entry_day(int p_cod_compania, int p_cod_campaign, Date p_fec_entry) throws Exception {
+	public int next_secu_entry_day(int p_cod_compania, int p_cod_campaign) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.ctCampaignEntryRepository.next_secu_entry_day(p_cod_compania, p_cod_campaign);
 	}
 
 	@Override

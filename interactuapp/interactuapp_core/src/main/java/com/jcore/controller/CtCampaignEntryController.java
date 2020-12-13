@@ -94,10 +94,13 @@ public class CtCampaignEntryController implements Serializable {
 	public void init() {
 
 		this.ctCampaignEntry = new CtCampaignEntry();
+		
 		this.ctCampaignEntry.setCodPais("CO");
 		this.ctCampaignEntrySele = new CtCampaignEntry();
 		this.editandoReg = false;
 		this.recupera_globales_usr();
+		
+		
 		this.loadCampaignEntrys();
 	}
 
@@ -107,48 +110,76 @@ public class CtCampaignEntryController implements Serializable {
 	}
 
 	public void saveCampaignEntry() {
+		boolean ocurrioException = false;
 		try 
 		{
 			this.ctCampaignEntry.setCodUsr(this.g_cod_usr);
 			this.ctCampaignEntry.setFecActu(Ga_Gbl_Var.getFecActual());
-
+			
 			//
-			if (this.isEditandoReg()) {
+			if (this.editandoReg) {
+				
 				// si estamos en edicion tenemos que recuperar el registro original para obtener
 				// todos los datos no modifibles
 				CtCampaignEntry auxCampaignEntry;
 						
 				try
 				{
+					this.ctCampaignEntry.getId().setCodCompania(this.g_cod_compania);
+					this.ctCampaignEntry.getId().setCodCompania(this.g_cod_campaing);
+					
 					auxCampaignEntry = this.ctCampaignEntryCrudService.findById(this.ctCampaignEntry);
+					
 				}
 				catch(Exception e)
-				{
+				{					
 					auxCampaignEntry = null;
 				}
 				
 				if (auxCampaignEntry != null)
 				{
+				
 					if (auxCampaignEntry.getTipSituacion().equals(Ga.ESTADO_TERMINADA)
 						||auxCampaignEntry.getTipSituacion().equals(Ga.ESTADO_CANCELADA))
 					{
+						Message.registra_Info("No puede modificar una reunion terminada o cancelada");
+					}
+					else
+					{
+						try 
+						{
+							this.ctCampaignEntryCrudService.update(this.ctCampaignEntry);
+							Message.registra_Info("Reunion "+this.ctCampaignEntry.getId().getNumSecuEntryDay()+" Actualizada");
+						}
 						
+						catch (Exception e) 
+						{
+							ocurrioException = true;
+							Message.registra_Error(e.getMessage() + " stackTrace" + e.getStackTrace());
+						}
 					}
 						
 				}
 				
-				try 
+				
+			} 
+			else 
+			{
+				this.ctCampaignEntry.setMcaInh(Ga.NOT);
+				//
+				int secuenciaReuniones = 0;
+				try
 				{
-					this.ctCampaignEntryCrudService.update(this.ctCampaignEntry);
+					secuenciaReuniones =this.ctCampaignEntryCrudService.next_secu_entry_day(this.g_cod_compania, this.g_cod_campaing);
+					secuenciaReuniones++;
+					
+				}
+				catch(Exception e)
+				{
+					secuenciaReuniones++;
 				}
 				
-				catch (Exception e) 
-				{
-					
-					Message.registra_Error(e.getMessage() + " stackTrace" + e.getStackTrace());
-				}
-			} else {
-				this.ctCampaignEntry.setMcaInh(Ga.NOT);
+				this.ctCampaignEntry.getId().setNumSecuEntryDay(secuenciaReuniones);
 				this.ctCampaignEntry.getId().setCodCampaign(this.g_cod_campaing);
 				this.ctCampaignEntry.getId().setCodCompania(this.g_cod_compania);
 				this.ctCampaignEntry.setCreateBy(this.g_cod_usr);// el usuario que crea la reunion
@@ -156,17 +187,25 @@ public class CtCampaignEntryController implements Serializable {
 				try
 				{
 					this.ctCampaignEntryCrudService.insert(this.ctCampaignEntry);
+					Message.registra_Info("Reunion "+this.ctCampaignEntry.getId().getNumSecuEntryDay()+" Creada");
 				}
 				catch(Exception e)
 				{
+					ocurrioException = true;
 					Message.registra_Error(e.getMessage() + " stackTrace" + e.getStackTrace());
 				}
 				
 
 			}
 
-			this.loadCampaignEntrys();
-			this.resetForm();
+			if (!ocurrioException)
+			{
+				
+				this.loadCampaignEntrys();				
+				this.resetForm();
+				
+			}
+			
 
 		} catch (Exception e) {
 			Message.registra_Error(e.getMessage() + " stackTrace" + e.getStackTrace());
@@ -177,6 +216,7 @@ public class CtCampaignEntryController implements Serializable {
 
 		try {
 			if (this.ctCampaignEntrySele != null) {
+				
 				this.ctCampaignEntry = this.ctCampaignEntrySele;
 				this.editandoReg = true;
 			} else {
@@ -195,12 +235,27 @@ public class CtCampaignEntryController implements Serializable {
 			if (this.ctCampaignEntrySele != null) {
 				
 				this.ctCampaignEntry = this.ctCampaignEntrySele;
-				this.ctCampaignEntry.setMcaInh(Ga.YES);// inhabilita el tercero con vigencia
-				this.ctCampaignEntryCrudService.update(this.ctCampaignEntry);
+				
+				if ( this.ctCampaignEntry.getTipSituacion().equals(Ga.ESTADO_CREADA))
+				{
+					try
+					{
+						this.ctCampaignEntryCrudService.delete(this.ctCampaignEntry);
+						Message.registra_Info("REUNION "+this.ctCampaignEntry.getId().getNumSecuEntryDay() +"ELIMINADA");
+					}
+					catch(Exception e)
+					{
+						Message.registra_Error(e.getStackTrace().toString());
+					}
+				}
+				else
+				{
+					Message.registra_Info("No puede eliminar una reunion que ya ha sido iniciada debe cancelarla.");
+				}
 				
 				this.loadCampaignEntrys();
 				this.resetForm();
-				Message.registra_Info("PERSONA INHABILITADA");
+				
 			} 
 			else {
 				Message.registra_Error("Porfavor seleccione un registro");
@@ -258,4 +313,32 @@ public class CtCampaignEntryController implements Serializable {
 		return editandoReg;
 	}
 
+	public CtCampaignEntry getCtCampaignEntry() {
+		
+		return ctCampaignEntry;
+		
+		
+	}
+
+	public void setCtCampaignEntry(CtCampaignEntry ctCampaignEntry) {
+		this.ctCampaignEntry = ctCampaignEntry;
+	}
+
+	public CtCampaignEntry getCtCampaignEntrySele() {
+		return ctCampaignEntrySele;
+	}
+
+	public void setCtCampaignEntrySele(CtCampaignEntry ctCampaignEntrySele) {
+		this.ctCampaignEntrySele = ctCampaignEntrySele;
+	}
+
+	public List<CtCampaignEntry> getCtCampaignEntrys() {
+		return ctCampaignEntrys;
+	}
+
+	public void setCtCampaignEntrys(List<CtCampaignEntry> ctCampaignEntrys) {
+		this.ctCampaignEntrys = ctCampaignEntrys;
+	}
+
+	
 }

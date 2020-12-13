@@ -32,6 +32,10 @@ public class CtInteractionLogEntry implements Serializable {
 	private Date fecActu;
 
 	@Temporal(TemporalType.DATE)
+	@Column(name="fec_entry")
+	private Date fecEntry;
+
+	@Temporal(TemporalType.DATE)
 	@Column(name="fec_entry_reg")
 	private Date fecEntryReg;
 
@@ -77,6 +81,14 @@ public class CtInteractionLogEntry implements Serializable {
 
 	public void setFecActu(Date fecActu) {
 		this.fecActu = fecActu;
+	}
+
+	public Date getFecEntry() {
+		return this.fecEntry;
+	}
+
+	public void setFecEntry(Date fecEntry) {
+		this.fecEntry = fecEntry;
 	}
 
 	public Date getFecEntryReg() {

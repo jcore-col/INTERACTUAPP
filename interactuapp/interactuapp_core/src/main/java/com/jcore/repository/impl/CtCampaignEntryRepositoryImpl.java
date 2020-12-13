@@ -35,7 +35,14 @@ public class CtCampaignEntryRepositoryImpl implements CtCampaignEntryRepository,
 	public CtCampaignEntry findById(CtCampaignEntry t) throws Exception {
 		// TODO Auto-generated method stub
 		
-		return em.find(t.getClass(), t.getId());
+		return em.createQuery("SELECT a FROM CtCampaignEntry a "
+				+ "WHERE a.id.codCompania = ?1 "
+				+ "AND a.id.codCampaign	  = ?2 "
+				+ "AND a.id.numSecuEntryDay = ?3 ",CtCampaignEntry.class)
+				.setParameter(1, t.getId().getCodCompania())
+				.setParameter(2, t.getId().getCodCampaign())
+				.setParameter(3, t.getId().getNumSecuEntryDay())
+				.getSingleResult();
 	}
 	@Override
 	public List<CtCampaignEntry> findAll() throws Exception {
@@ -49,17 +56,21 @@ public class CtCampaignEntryRepositoryImpl implements CtCampaignEntryRepository,
 		return null;
 	}
 	@Override
-	public int next_secu_entry_day(int p_cod_compania, int p_cod_campaign, Date p_fec_entry) throws Exception {
+	public int next_secu_entry_day(int p_cod_compania, int p_cod_campaign) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return em.createQuery("SELECT MAX(a.id.numSecuEntryDay) FROM CtCampaignEntry a "
+				+ "WHERE a.id.codCompania = ?1 "
+				+ "AND a.id.codCampaign	  = ?2 ",Integer.class)
+				.setParameter(1, p_cod_compania)
+				.setParameter(2, p_cod_campaign).getSingleResult();
 	}
 	@Override
 	public List<CtCampaignEntry> devCampaignsEntry(int p_cod_compania, int p_cod_campaign) throws Exception {
 		// TODO Auto-generated method stub
-		return em.createQuery("SELECT * FROM CtCampaignEntry a "
+		return em.createQuery("SELECT a FROM CtCampaignEntry a "
 				+ "WHERE a.id.codCompania = ?1 "
 				+ "AND a.id.codCampaign	  = ?2 "
-				+ "ORDER BY a.id.fecEntry desc",CtCampaignEntry.class)
+				+ "ORDER BY a.fecEntry desc",CtCampaignEntry.class)
 				.setParameter(1, p_cod_compania)
 				.setParameter(2, p_cod_campaign).getResultList();
 	}

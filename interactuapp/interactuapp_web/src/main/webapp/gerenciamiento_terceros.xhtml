@@ -16,7 +16,7 @@
 	<h:form id="formTercero">
 		<p:growl id="messages" showDetail="true" />
 		<!-- Barra herramientas opciones registro -->
-		<p:toolbar>
+		<p:toolbar style="background-color:#C8DEFF;">
 			<f:facet name="right">
 				<p:commandButton value="GLOBALES" icon="pi pi-folder-open"
 					process="@this"
@@ -126,10 +126,10 @@
 		</p:panelGrid>
 		<p:dataTable id="dtTercero"
 			value="#{ctGeneralTerceroController.ctGeneralTerceros}"
-			style="font-size:12px;" var="tercero" rowKey="#{tercero.id.codDocum}"
+			style="font-size:12px;" tableStyle="table-layout: auto;" var="tercero" rowKey="#{tercero.id.codDocum}"
 			selectionMode="single" emptyMessage="No existe usuarios de sistema">
 			<f:facet name="header">
-				<p:outputLabel value="Usuarios INTACTUAPP" />
+				<p:outputLabel value="Personas Registradas" />
 			</f:facet>
 			<p:ajax event="rowSelect"
 				listener="#{ctGeneralTerceroController.selectCtTercero}" />

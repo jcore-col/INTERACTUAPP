@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+	<!-- Menu -->
+	<h:form>
+		<p:growl id="messages" showDetail="true" />
+		<p:menuButton value="INTERACTUAPP">
+		</p:menuButton>
+	</h:form>
+	<h:form id="formCampaignEntry">
+		<p:growl id="messages" showDetail="true" />
+		<!-- Barra herramientas opciones registro -->
+		<p:toolbar style="background-color:#C8DEFF;">
+			<f:facet name="right">
+				<p:commandButton value="GLOBALES" icon="pi pi-folder-open"
+					process="@this"
+					actionListener="#{ctCampaignEntryController.verGlobales()}"
+					update=":formCampaignEntry:messages" />
+				<p:commandButton value="Guardar" icon="pi pi-save"
+					process="@this :formCampaignEntry:gridCampaignEntry"
+					actionListener="#{ctCampaignEntryController.saveCampaignEntry()}"
+					update=":formCampaignEntry:messages :formCampaignEntry:gridCampaignEntry :formCampaignEntry:dtCampaignEntry" />
+				<p:commandButton value="Editar" icon="pi pi-folder-open"
+					process="@this"
+					actionListener="#{ctCampaignEntryController.editCampaignEntry()}"
+					update=":formCampaignEntry:messages :formCampaignEntry:gridCampaignEntry" />
+				<p:commandButton value="Eliminar" icon="pi pi-folder-open"
+					process="@this"
+					actionListener="#{ctCampaignEntryController.deleteCampaignEntry()}"
+					update=":formCampaignEntry:messages :formCampaignEntry:gridCampaignEntry :formCampaignEntry:dtCampaignEntry" />
+			</f:facet>
+		</p:toolbar>
+		<p:panelGrid id="gridCampaignEntry" columns="4" layout="grid">
+			<p:outputLabel value="Codigo Reunion" for="num_secu_entry_day" />
+			<p:inputText id="num_secu_entry_day" required="true" maxlength="4"
+				readonly="true"
+				value="#{ctCampaignEntryController.ctCampaignEntry.id.numSecuEntryDay}" />
+			<p:outputLabel for="fec_entry" value="Fecha Reunion" />
+			<p:calendar id="fec_entry"
+				value="#{ctCampaignEntryController.ctCampaignEntry.fecEntry}"
+				locale="es" required="true" />
+			<p:outputLabel value="Estado Reunion" for="tip_situacion" />
+			<p:selectOneMenu id="tip_situacion"
+				value="#{ctCampaignEntryController.ctCampaignEntry.tipSituacion}"
+				required="true">
+				<f:selectItem itemLabel="Reunion Creada" itemValue="1" />
+				<f:selectItem itemLabel="Reunion Iniciada" itemValue="2" />
+				<f:selectItem itemLabel="Reunion Terminada" itemValue="4" />
+				<f:selectItem itemLabel="Reunion Cancelada" itemValue="3" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Num Asistentes" for="num_interactions" />
+			<p:inputText id="num_interactions" required="true" maxlength="5"
+				value="#{ctCampaignEntryController.ctCampaignEntry.numInteractions}" />
+			<p:outputLabel value="Departamento" for="cod_estado" />
+			<p:selectOneMenu id="cod_estado"
+				value="#{ctCampaignEntryController.ctCampaignEntry.codEstado}"
+				required="false">
+				<p:ajax listener="#{ctCampaignEntryController.onCodEstadoChange}"
+					update="cod_prov" />
+				<f:selectItem itemLabel="Seleccione Depto" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{ctCampaignEntryController.gaEstados}"
+					var="estado" itemLabel="#{estado.nomEstado}"
+					itemValue="#{estado.id.codEstado}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Ciudad" for="cod_prov" />
+			<p:selectOneMenu id="cod_prov"
+				value="#{ctCampaignEntryController.ctCampaignEntry.codProv}"
+				required="false">
+				<p:ajax listener="#{ctCampaignEntryController.onCodProvChange}"
+					update="cod_localidad" />
+				<f:selectItem itemLabel="Seleccione Ciudad" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{ctCampaignEntryController.gaCiudades}"
+					var="ciudad" itemLabel="#{ciudad.nomCiudad}"
+					itemValue="#{ciudad.id.codCiudad}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Barrio" for="cod_localidad" />
+			<p:selectOneMenu id="cod_localidad"
+				value="#{ctCampaignEntryController.ctCampaignEntry.codLocalidad}"
+				required="false">
+				<f:selectItem itemLabel="Seleccione Barrio" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{ctCampaignEntryController.gaLocalidades}"
+					var="barrio" itemLabel="#{barrio.nomLocalidad}"
+					itemValue="#{barrio.id.codLocalidad}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="direccion" for="domicilio1" />
+			<p:inputText id="domicilio1" required="true" maxlength="40"
+				value="#{ctCampaignEntryController.ctCampaignEntry.domicilio1}" />
+		</p:panelGrid>
+		<p:dataTable id="dtCampaignEntry"
+			value="#{ctCampaignEntryController.ctCampaignEntrys}"
+			style="font-size:12px;" tableStyle="table-layout: auto;" var="reunion"
+			rowKey="#{reunion.id.numSecuEntryDay}" selectionMode="single"
+			emptyMessage="No existe reuniones">
+			<f:facet name="header">
+				<p:outputLabel value="Reuniones campaña INTACTUAPP" />
+			</f:facet>
+			<p:ajax event="rowSelect"
+				listener="#{ctCampaignEntryController.selectCtCampaignEntry}" />
+
+			<p:column headerText="Codigo Reunion">
+				<h:outputText value="#{reunion.id.numSecuEntryDay}" />
+			</p:column>
+
+			<p:column headerText="Fecha Reunion">
+				<h:outputText value="#{reunion.fecEntry}" />
+			</p:column>
+
+			<p:column headerText="Organizador">
+				<h:outputText value="#{reunion.createBy}" />
+			</p:column>
+
+			<p:column headerText="N Asistentes">
+				<h:outputText value="#{reunion.numInteractions}" />
+			</p:column>
+
+			<p:column headerText="Estado Reunion">
+				<h:outputText value="#{reunion.tipSituacion}" />
+			</p:column>
+
+			<p:column headerText="Direccion ">
+				<h:outputText value="#{reunion.domicilio1}" />
+			</p:column>
+
+			<p:column headerText="Dept">
+				<h:outputText value="#{reunion.codEstado}" />
+			</p:column>
+
+			<p:column headerText="Dep">
+				<h:outputText value="#{tercero.codEstado}" />
+			</p:column>
+
+			<p:column headerText="Ciud">
+				<h:outputText value="#{reunion.codProv}" />
+			</p:column>
+
+			<p:column headerText="Barrio">
+				<h:outputText value="#{reunion.codLocalidad}" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>
