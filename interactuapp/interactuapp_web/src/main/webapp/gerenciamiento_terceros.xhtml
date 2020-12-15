@@ -125,61 +125,66 @@
 				value="#{ctGeneralTerceroController.ctGeneralTercero.tlfNumero}" />
 		</p:panelGrid>
 		<p:dataTable id="dtTercero"
-			value="#{ctGeneralTerceroController.ctGeneralTerceros}"
-			style="font-size:12px;" tableStyle="table-layout: auto;" var="tercero" rowKey="#{tercero.id.codDocum}"
+			value="#{ctGeneralTerceroController.vistaTerceros}"
+			style="font-size:12px;" tableStyle="table-layout: auto;" var="tercero" rowKey="#{tercero.tercero.first.id.codDocum}"
 			selectionMode="single" emptyMessage="No existe usuarios de sistema">
 			<f:facet name="header">
 				<p:outputLabel value="Personas Registradas" />
 			</f:facet>
 			<p:ajax event="rowSelect"
-				listener="#{ctGeneralTerceroController.selectCtTercero}" />
+				listener="#{ctGeneralTerceroController.selectCtTercero}"
+				update="formTercero:messages" />
 
 			<p:column headerText="Tipo">
-				<h:outputText value="#{tercero.id.tipDocum}" />
+				<h:outputText value="#{tercero.tercero.first.id.tipDocum}" />
 			</p:column>
 
 			<p:column headerText="Documento">
-				<h:outputText value="#{tercero.id.codDocum}" />
+				<h:outputText value="#{tercero.tercero.first.id.codDocum}" />
 			</p:column>
-
+			
+			<p:column headerText="Usuario">
+				<h:outputText value="#{tercero.tercero.second.toString()}" />
+			</p:column>
+			
 			<p:column headerText="Nombre">
-				<h:outputText value="#{tercero.nomTercero}" />
+				<h:outputText value="#{tercero.tercero.first.nomTercero}" />
 			</p:column>
 
 			<p:column headerText="Apellido">
-				<h:outputText value="#{tercero.apellidoTercero}" />
+				<h:outputText value="#{tercero.tercero.first.apellidoTercero}" />
 			</p:column>
 
 			<p:column headerText="Nacimiento">
-				<h:outputText value="#{tercero.fecNacimiento}" />
+				<h:outputText value="#{tercero.tercero.first.fecNacimiento}" />
 			</p:column>
 
 			<p:column headerText="Ocupacion">
-				<h:outputText value="#{tercero.codProfesion}" />
+				<h:outputText value="#{tercero.tercero.first.codProfesion}" />
 			</p:column>
 
 			<p:column headerText="Tipo Dom">
-				<h:outputText value="#{tercero.tipDomicilio}" />
+				<h:outputText value="#{tercero.tercero.first.tipDomicilio}" />
 			</p:column>
 
 			<p:column headerText="Dep">
-				<h:outputText value="#{tercero.codEstado}" />
+				<h:outputText value="#{tercero.tercero.first.codEstado}" />
 			</p:column>
 
 			<p:column headerText="Ciud">
-				<h:outputText value="#{tercero.codProv}" />
+				<h:outputText value="#{tercero.tercero.first.codProv}" />
 			</p:column>
 
 			<p:column headerText="Barrio">
-				<h:outputText value="#{tercero.codLocalidad}" />
+				<h:outputText value="#{tercero.tercero.first.codLocalidad}" />
 			</p:column>
 
 			<p:column headerText="Direccion">
-				<h:outputText value="#{tercero.domicilio1}" />
+				<h:outputText value="#{tercero.tercero.first.domicilio1}" />
 			</p:column>
 
 			<p:column headerText="Tel">
-				<h:outputText value="#{tercero.tlfNumero}" />
+				<h:outputText value="#{tercero.tercero.first.tlfNumero}" />
 			</p:column>
 
 		</p:dataTable>

@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+	<!-- Menu -->
+	<h:form>
+		<p:growl id="messages" showDetail="true" />
+		<p:menuButton value="INTERACTUAPP">
+		</p:menuButton>
+	</h:form>
+	<h:form id="formInteractionLogEntry">
+		<p:growl id="messages" showDetail="true" />
+		<!-- Barra herramientas opciones registro -->
+		<p:toolbar style="background-color:#C8DEFF;">
+			<f:facet name="right">
+				<p:commandButton value="GLOBALES" icon="pi pi-folder-open"
+					process="@this"
+					actionListener="#{ctInteractionLogEntryController.verGlobales()}"
+					update=":formInteractionLogEntry:messages" />
+				<p:commandButton value="Guardar" icon="pi pi-save"
+					process="@this :formInteractionLogEntry:gridInteractionLogEntry"
+					actionListener="#{ctInteractionLogEntryController.saveInteractionLogEntry()}"
+					update=":formInteractionLogEntry:messages :formInteractionLogEntry:gridInteractionLogEntry :formInteractionLogEntry:dtInteractionLogEntry" />
+				<p:commandButton value="Editar" icon="pi pi-folder-open"
+					process="@this"
+					actionListener="#{ctInteractionLogEntryController.editInteractionLogEntry()}"
+					update=":formInteractionLogEntry:messages :formInteractionLogEntry:gridInteractionLogEntry" />
+				<p:commandButton value="Eliminar" icon="pi pi-folder-open"
+					process="@this"
+					actionListener="#{ctInteractionLogEntryController.deleteInteractionLogEntry()}"
+					update=":formInteractionLogEntry:messages :formInteractionLogEntry:gridInteractionLogEntry :formInteractionLogEntry:dtInteractionLogEntry" />
+			</f:facet>
+		</p:toolbar>
+		<p:panelGrid id="gridInteractionLogEntry" columns="4" layout="grid">
+			<p:outputLabel for="fec_entry" value="Fecha Reunion" />
+			<p:calendar id="fec_entry"
+				value="#{ctInteractionLogEntryController.ctInteractionLogEntry.fecEntry}"
+				locale="es" required="true">
+				<p:ajax
+					listener="#{ctInteractionLogEntryController.onFecEntryChange}"
+					update="num_secu_entry_day" />
+			</p:calendar>
+			<p:outputLabel value="Reunion Seleccionada" for="num_secu_entry_day" />
+			<p:selectOneMenu id="num_secu_entry_day"
+				value="#{ctInteractionLogEntryController.ctInteractionLogEntry.id.numSecuEntryDay}"
+				required="true">
+				<p:ajax
+					listener="#{ctInteractionLogEntryController.onReunionSelected}"
+					update=":formInteractionLogEntry:dtInteractionLogEntry" />
+				<f:selectItem itemLabel="Seleccione Reunion" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems
+					value="#{ctInteractionLogEntryController.ctCampaignEntrys}"
+					var="reunion" itemLabel="#{reunion.id.numSecuEntryDay}"
+					itemValue="#{reunion.id.numSecuEntryDay}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Tipo" for="tip_docum" />
+			<p:selectOneMenu id="tip_docum"
+				value="#{ctInteractionLogEntryController.ctInteractionLogEntry.id.tipDocum}"
+				required="true">
+				<f:selectItem itemLabel="Cedula" itemValue="CC" />
+				<f:selectItem itemLabel="Pasaporte" itemValue="PAS" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Cedula" for="cod_docum" />
+			<p:inputText id="cod_docum" required="true" maxlength="20"
+				value="#{ctInteractionLogEntryController.ctInteractionLogEntry.id.codDocum}" />
+			<p:outputLabel value="Calificacion Reunion" for="evaluation_entry" />
+			<p:selectOneMenu id="evaluation_entry"
+				value="#{ctInteractionLogEntryController.ctInteractionLogEntry.evaluationEntry}"
+				required="false" >
+				<f:selectItem itemLabel="SeleccioneCalificacion" itemValue="0"
+					noSelectionOption="true" />
+				<f:selectItem itemLabel="Mala" itemValue="1" />
+				<f:selectItem itemLabel="Regular" itemValue="2" />
+				<f:selectItem itemLabel="Buena" itemValue="3" />
+				<f:selectItem itemLabel="Excelente" itemValue="4" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Estado Reunion" for="tip_situacion" />
+			<p:selectOneMenu id="tip_situacion"
+				value="#{ctInteractionLogEntryController.ctCampaignEntry.tipSituacion}"
+				required="false" >
+				<f:selectItem itemLabel="Estado Reunion" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItem itemLabel="Reunion Creada" itemValue="1" />
+				<f:selectItem itemLabel="Reunion Iniciada" itemValue="2" />
+				<f:selectItem itemLabel="Reunion Terminada" itemValue="4" />
+				<f:selectItem itemLabel="Reunion Cancelada" itemValue="3" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Num Asistentes" for="num_interactions" />
+			<p:inputText id="num_interactions" required="false" maxlength="5" readonly="true"
+				value="#{ctInteractionLogEntryController.ctCampaignEntry.numInteractions}" />
+			<p:outputLabel value="Departamento" for="cod_estado" />
+			<p:selectOneMenu id="cod_estado"
+				value="#{ctInteractionLogEntryController.ctCampaignEntry.codEstado}"
+				required="false">
+				<p:ajax
+					listener="#{ctInteractionLogEntryController.onCodEstadoChange}"
+					update="cod_prov" />
+				<f:selectItem itemLabel="Seleccione Depto" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{ctInteractionLogEntryController.gaEstados}"
+					var="estado" itemLabel="#{estado.nomEstado}"
+					itemValue="#{estado.id.codEstado}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Ciudad" for="cod_prov" />
+			<p:selectOneMenu id="cod_prov"
+				value="#{ctInteractionLogEntryController.ctCampaignEntry.codProv}"
+				required="false">
+				<p:ajax
+					listener="#{ctInteractionLogEntryController.onCodProvChange}"
+					update="cod_localidad" />
+				<f:selectItem itemLabel="Seleccione Ciudad" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{ctInteractionLogEntryController.gaCiudades}"
+					var="ciudad" itemLabel="#{ciudad.nomCiudad}"
+					itemValue="#{ciudad.id.codCiudad}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Barrio" for="cod_localidad" />
+			<p:selectOneMenu id="cod_localidad"
+				value="#{ctInteractionLogEntryController.ctCampaignEntry.codLocalidad}"
+				required="false">
+				<f:selectItem itemLabel="Seleccione Barrio" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems
+					value="#{ctInteractionLogEntryController.gaLocalidades}"
+					var="barrio" itemLabel="#{barrio.nomLocalidad}"
+					itemValue="#{barrio.id.codLocalidad}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="direccion" for="domicilio1" />
+			<p:inputText id="domicilio1" required="false" maxlength="40" readonly="true"
+				value="#{ctInteractionLogEntryController.ctCampaignEntry.domicilio1}" />
+		</p:panelGrid>
+		<p:dataTable id="dtInteractionLogEntry"
+			value="#{ctInteractionLogEntryController.ctInteractionLogEntrys}"
+			style="font-size:12px;" tableStyle="table-layout: auto;"
+			var="reunion" rowKey="#{reunion.id.codDocum}"
+			selectionMode="single" emptyMessage="No existe reuniones">
+			<f:facet name="header">
+				<p:outputLabel value="Registro Asistencia Reuniones" />
+			</f:facet>
+			<p:ajax event="rowSelect"
+				listener="#{ctInteractionLogEntryController.selectCtInteractionLogEntry}" />
+
+			<p:column headerText="Codigo Reunion">
+				<h:outputText value="#{reunion.id.numSecuEntryDay}" />
+			</p:column>
+
+			<p:column headerText="Fecha Reunion">
+				<h:outputText value="#{reunion.fecEntry}" />
+			</p:column>
+
+			<p:column headerText="Tipo Documento">
+				<h:outputText value="#{reunion.id.tipDocum}" />
+			</p:column>
+			
+			<p:column headerText="Cedula Asistente">
+				<h:outputText value="#{reunion.id.codDocum}" />
+			</p:column>
+
+			<p:column headerText="Registrado por">
+				<h:outputText value="#{reunion.codUsrReg}" />
+			</p:column>
+			
+			<p:column headerText="Evaluacion Reunion">
+				<h:outputText value="#{reunion.evaluationEntry}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

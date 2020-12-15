@@ -1,6 +1,7 @@
 package com.jcore.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -27,6 +28,7 @@ import com.jcore.service_interface.GaProfesionCrudService;
 import com.jcore.utils.Ga_Gbl_Var;
 import com.jcore.utils.GlobalSession;
 import com.jcore.utils.Message;
+import com.jcore.utils.Pair;
 
 @Named
 @ViewScoped
@@ -53,6 +55,29 @@ public class CtGeneralTerceroController implements Serializable{
 	private CtGeneralTerceroCrudService  ctGeneralTerceroCrudService;
 	private CtGeneralTercero ctGeneralTercero;
 	private CtGeneralTercero ctGeneralTerceroSele;
+	
+	public class VistaTercero implements Serializable
+	{
+		private static final long serialVersionUID = 1L;
+		public Pair<CtGeneralTercero,String> tercero;
+		public VistaTercero(CtGeneralTercero tercero,String usuarioReg)
+		{
+			this.tercero = new Pair<CtGeneralTercero,String>(tercero,usuarioReg);
+		}
+		public VistaTercero()
+		{
+			this.tercero = new Pair<CtGeneralTercero,String>(new CtGeneralTercero(),new String());
+		}
+		public Pair<CtGeneralTercero, String> getTercero() {
+			return tercero;
+		}
+
+		public void setTercero(Pair<CtGeneralTercero, String> tercero) {
+			this.tercero = tercero;
+		}
+		
+	}
+	List<VistaTercero> vistaTerceros;
 	private List<CtGeneralTercero> ctGeneralTerceros;
 	
 	@Inject
@@ -86,6 +111,8 @@ public class CtGeneralTerceroController implements Serializable{
 	
 	public void  loadPersonas() {
 
+		List<CtGeneralTercero> auxTerceros;
+		this.vistaTerceros = new ArrayList<VistaTercero>();
 		try 
 		{
 			if (this.g_rol_usr.equals("ADMIN"))
@@ -100,11 +127,24 @@ public class CtGeneralTerceroController implements Serializable{
 			}
 			
 			
-			
-			for (CtGeneralTercero e : this.ctGeneralTerceros)
+			CtLogPersonRegistry auxLogPersonRegistry;
+			for (CtGeneralTercero tercero : this.ctGeneralTerceros)
 			{
-				Message.registra_Info("entro ciclo");
-				this.lista = this.lista + e.getId().getTipDocum() + e.getId().getCodDocum();
+				try
+				{
+					auxLogPersonRegistry = this.ctLogPersonRegistryCrudService.buscarPorCodDocum(this.g_cod_compania, this.g_cod_campaing, tercero.getId().getTipDocum(), tercero.getId().getCodDocum());
+				}
+				catch(Exception e)
+				{
+					auxLogPersonRegistry = null;
+				}
+				
+				if (auxLogPersonRegistry != null)
+				{
+					Message.registra_Info("Entro ciclo");
+					VistaTercero auxVista = new VistaTercero(tercero,auxLogPersonRegistry.getId().getCodUsr());
+					this.vistaTerceros.add(auxVista);
+				}
 			}
 			
 		}
@@ -293,7 +333,17 @@ public class CtGeneralTerceroController implements Serializable{
 	}
 	
 	public void selectCtTercero(SelectEvent e) {
-		this.ctGeneralTerceroSele = (CtGeneralTercero)e.getObject();
+		try
+		{
+			VistaTercero auxVistaTercero = new VistaTercero();
+			auxVistaTercero = (VistaTercero)e.getObject();
+			this.ctGeneralTerceroSele = auxVistaTercero.tercero.getFirst();
+		}
+	    catch(Exception error)
+		{
+	    	Message.registra_Error(error.getMessage());
+		}
+		
 		
 	}
 	
@@ -423,4 +473,11 @@ public class CtGeneralTerceroController implements Serializable{
         }
             
     }
+	public List<VistaTercero> getVistaTerceros() {
+		return vistaTerceros;
+	}
+	public void setVistaTerceros(List<VistaTercero> vistaTerceros) {
+		this.vistaTerceros = vistaTerceros;
+	}
+	
 }
