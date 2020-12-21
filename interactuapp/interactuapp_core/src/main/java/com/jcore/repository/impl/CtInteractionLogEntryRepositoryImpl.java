@@ -1,7 +1,7 @@
 package com.jcore.repository.impl;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -55,7 +55,7 @@ public class CtInteractionLogEntryRepositoryImpl implements CtInteractionLogEntr
 		return em.createQuery("SELECT a FROM CtCampaignEntry a "
 				+ "WHERE a.id.codCompania = ?1 "
 				+ "AND a.id.codCampaign = ?2 "
-				+ "AND a.fec_entry = ? 3 "
+				+ "AND a.fecEntry = ?3 "
 				+ "AND a.tipSituacion = '2' "
 				+ "ORDER BY a.id.numSecuEntryDay ASC", CtCampaignEntry.class)
 				.setParameter(1, p_cod_compania)
@@ -70,7 +70,7 @@ public class CtInteractionLogEntryRepositoryImpl implements CtInteractionLogEntr
 				+ "WHERE a.id.codCompania = ?1 "
 				+ "AND a.id.codCampaign = ?2 "
 				+ "AND a.id.numSecuEntryDay = ?3 "
-				+ "AND a.fec_entry = ?4", CtInteractionLogEntry.class)
+				+ "AND a.fecEntry = ?4", CtInteractionLogEntry.class)
 				.setParameter(1, p_cod_compania)
 				.setParameter(2, p_cod_campaign)
 				.setParameter(3, p_num_secu_entry_day)

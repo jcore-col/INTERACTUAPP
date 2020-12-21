@@ -1,7 +1,7 @@
 package com.jcore.controller;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -34,15 +34,15 @@ public class CtInteractionLogEntryController implements Serializable {
 
 	@Inject
 	private GaEstadoCrudService gaEstadoCrudService;
-	private List<GaEstado> gaEstados;
+	private GaEstado gaEstado;
 
 	@Inject
 	private GaCiudadCrudService gaCiudadCrudService;
-	private List<GaCiudad> gaCiudades;
+	private GaCiudad gaCiudad;
 
 	@Inject
 	private GaLocalidadCrudService gaLocalidadCrudService;
-	private List<GaLocalidad> gaLocalidades;
+	private GaLocalidad gaLocalidad;
 	@Inject
 	private CtInteractionLogEntryCrudService ctInteractionLogEntryCrudService;
 	private CtInteractionLogEntry ctInteractionLogEntry;
@@ -122,8 +122,7 @@ public class CtInteractionLogEntryController implements Serializable {
 			this.ctInteractionLogEntry.setCodUsr(this.g_cod_usr);
 			this.ctInteractionLogEntry.setFecActu(Ga_Gbl_Var.getFecActual());
 			this.ctInteractionLogEntry.setCodUsrReg(this.g_cod_usr);
-			this.ctInteractionLogEntry.setFecEntry(Ga_Gbl_Var.getFecActual());
-			this.ctInteractionLogEntry.setCodUsrReg(this.g_cod_usr);
+			this.ctInteractionLogEntry.setFecEntryReg(Ga_Gbl_Var.getFecActual());
 			this.ctInteractionLogEntry.getId().setCodCampaign(this.g_cod_campaing);
 			this.ctInteractionLogEntry.getId().setCodCompania(this.g_cod_compania);
 			try
@@ -137,8 +136,9 @@ public class CtInteractionLogEntryController implements Serializable {
 				Message.registra_Info("Registro Persona "+this.ctInteractionLogEntry.getId().getCodDocum()+" actualizado");
 			}
 
-
-		} catch (Exception e) {
+			this.loadCampaignEntrys();
+		} 
+		catch (Exception e) {
 			Message.registra_Error(e.getMessage() + " stackTrace" + e.getStackTrace());
 		}
 	}
@@ -247,8 +247,11 @@ public class CtInteractionLogEntryController implements Serializable {
 
 		try {
 			this.ctCampaignEntrys = this.ctInteractionLogEntryCrudService.devReunionesPorFecha(this.g_cod_compania, this.g_cod_campaing, (Date)this.ctInteractionLogEntry.getFecEntry());
+			
 
 		} catch (Exception e) {
+			
+			Message.registra_Info(e.getMessage());
 			this.ctCampaignEntrys = null;
 		}
 
@@ -273,6 +276,49 @@ public class CtInteractionLogEntryController implements Serializable {
 			this.ctCampaignEntry.getId().setCodCampaign(this.g_cod_campaing);
 			this.ctCampaignEntry.getId().setNumSecuEntryDay(this.ctInteractionLogEntry.getId().getNumSecuEntryDay());
 			this.ctCampaignEntry = this.ctCampaignEntryCrudService.findById(this.ctCampaignEntry);
+			
+			this.ctInteractionLogEntry.setFecEntry(this.ctCampaignEntry.getFecEntry());
+			
+			GaEstado auxEstado = new GaEstado();
+			GaCiudad auxCiudad = new GaCiudad();
+			GaLocalidad auxLocalidad = new GaLocalidad();
+			
+			auxEstado.getId().setCodEstado(this.ctCampaignEntry.getCodEstado());
+			auxEstado.getId().setCodPais(this.ctCampaignEntry.getCodPais());
+			//
+			auxCiudad.getId().setCodPais(auxEstado.getId().getCodPais());
+			auxCiudad.getId().setCodEstado(auxEstado.getId().getCodEstado());
+			auxCiudad.getId().setCodCiudad(this.ctCampaignEntry.getCodProv());
+			//
+			auxLocalidad.getId().setCodPais(auxCiudad.getId().getCodPais());
+			auxLocalidad.getId().setCodCiudad(auxCiudad.getId().getCodCiudad());
+			auxLocalidad.getId().setCodLocalidad(this.ctCampaignEntry.getCodLocalidad());
+			
+			try
+			{
+				this.gaEstado = this.gaEstadoCrudService.findById(auxEstado);
+			}
+			catch(Exception e)
+			{
+				this.gaEstado = null;
+			}
+			try
+			{
+				this.gaCiudad = this.gaCiudadCrudService.findById(auxCiudad);
+			}
+			catch(Exception e)
+			{
+				this.gaCiudad = null;
+			}
+			try
+			{
+				this.gaLocalidad = this.gaLocalidadCrudService.findById(auxLocalidad);
+			}
+			catch(Exception e)
+			{
+				this.gaLocalidad = null;
+			}
+			
 		}
 		catch(Exception e)
 		{
@@ -280,50 +326,29 @@ public class CtInteractionLogEntryController implements Serializable {
 		}
 	}
 
-	public List<GaEstado> getGaEstados() {
-		return gaEstados;
+	public GaEstado getGaEstado() {
+		return gaEstado;
 	}
 
-	public void setGaEstados(List<GaEstado> gaEstados) {
-		this.gaEstados = gaEstados;
+	public void setGaEstado(GaEstado gaEstado) {
+		this.gaEstado = gaEstado;
 	}
 
-	public List<GaCiudad> getGaCiudades() {
-		return gaCiudades;
+	public GaCiudad getGaCiudad() {
+		return gaCiudad;
 	}
 
-	public void setGaCiudades(List<GaCiudad> gaCiudades) {
-		this.gaCiudades = gaCiudades;
+	public void setGaCiudad(GaCiudad gaCiudad) {
+		this.gaCiudad = gaCiudad;
 	}
 
-	public List<GaLocalidad> getGaLocalidades() {
-		return gaLocalidades;
+	public GaLocalidad getGaLocalidad() {
+		return gaLocalidad;
 	}
 
-	public void setGaLocalidades(List<GaLocalidad> gaLocalidades) {
-		this.gaLocalidades = gaLocalidades;
+	public void setGaLocalidad(GaLocalidad gaLocalidad) {
+		this.gaLocalidad = gaLocalidad;
 	}
+
 	
-	public void onCodEstadoChange() {
-
-		try {
-			this.gaCiudades = this.gaCiudadCrudService.devCiudadPorPaisYEstado(this.ctCampaignEntry.getCodPais(),
-					this.ctCampaignEntry.getCodEstado());
-		} catch (Exception e) {
-			this.gaCiudades = null;
-		}
-
-	}
-
-	public void onCodProvChange() {
-
-		try {
-			this.gaLocalidades = this.gaLocalidadCrudService.devLocalidadesPorCiudad(this.ctCampaignEntry.getCodPais(),
-					this.ctCampaignEntry.getCodProv());
-		} catch (Exception e) {
-			this.gaLocalidades = null;
-			Message.registra_Error("Porfavor seleccione un departamento");
-		}
-
-	}
 }

@@ -26,6 +26,7 @@ public class GaCiudad implements Serializable {
 	private String nomCiudad;
 
 	public GaCiudad() {
+		this.id = new GaCiudadPK();
 	}
 
 	public GaCiudadPK getId() {

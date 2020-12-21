@@ -48,7 +48,7 @@ public class GaEstadoRepositoryImpl implements GaEstadoRepository,Serializable{
 	@Override
 	public GaEstado findById(GaEstado t) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return em.find(GaEstado.class, t.getId());
 	}
 
 

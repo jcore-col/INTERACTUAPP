@@ -26,6 +26,7 @@ public class GaLocalidad implements Serializable {
 	private String nomLocalidad;
 
 	public GaLocalidad() {
+		this.id = new GaLocalidadPK();
 	}
 
 	public GaLocalidadPK getId() {

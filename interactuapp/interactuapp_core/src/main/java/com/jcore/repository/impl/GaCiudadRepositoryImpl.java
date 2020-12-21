@@ -35,7 +35,7 @@ public class GaCiudadRepositoryImpl implements GaCiudadRepository,Serializable{
 	@Override
 	public GaCiudad findById(GaCiudad t) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return em.find(GaCiudad.class, t.getId());
 	}
 	@Override
 	public List<GaCiudad> findAll() throws Exception {

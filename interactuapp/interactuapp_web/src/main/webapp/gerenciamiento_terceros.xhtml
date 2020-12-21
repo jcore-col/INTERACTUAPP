@@ -18,10 +18,6 @@
 		<!-- Barra herramientas opciones registro -->
 		<p:toolbar style="background-color:#C8DEFF;">
 			<f:facet name="right">
-				<p:commandButton value="GLOBALES" icon="pi pi-folder-open"
-					process="@this"
-					actionListener="#{ctGeneralTerceroController.verGlobales()}"
-					update=":formTercero:messages" />
 				<p:commandButton value="Guardar" icon="pi pi-folder-open"
 					process="@this :formTercero:gridTercero"
 					actionListener="#{ctGeneralTerceroController.saveTercero()}"
@@ -67,7 +63,7 @@
 				locale="es" navigator="true" />
 
 			<p:outputLabel value="Ocupacion" for="cod_profesion" />
-			<p:selectOneMenu id="cod_profesion"
+			<p:selectOneMenu id="cod_profesion" style="width:200px"
 				value="#{ctGeneralTerceroController.ctGeneralTercero.codProfesion}"
 				required="false">
 				<f:selectItem itemLabel="Seleccione Ocupacion" itemValue=""

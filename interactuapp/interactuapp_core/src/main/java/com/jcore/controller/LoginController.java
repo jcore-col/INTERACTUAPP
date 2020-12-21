@@ -74,7 +74,7 @@ public class LoginController implements Serializable {
 		}
 		catch(Exception e)
 		{
-			Message.registra_Error("No existe usuario");
+			Message.registra_Error("No existe usuario "+this.gaUser.getCodUsr()+" "+ e.getMessage());
 			this.gaUser = null;
 		}
 		
@@ -85,7 +85,7 @@ public class LoginController implements Serializable {
 		}
 		catch(Exception e)
 		{
-			Message.registra_Error("No existe propiedades para el usuario usuario");
+			Message.registra_Error("No existe propiedades para el usuario "+this.gaUser.getCodUsr()+" "+ e.getMessage());
 			this.gaUsrProperty = null;
 		}
 		

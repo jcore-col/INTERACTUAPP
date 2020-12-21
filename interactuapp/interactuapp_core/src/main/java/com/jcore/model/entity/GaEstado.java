@@ -26,6 +26,7 @@ public class GaEstado implements Serializable {
 	private String nomEstado;
 
 	public GaEstado() {
+		this.id = new GaEstadoPK();
 	}
 
 	public GaEstadoPK getId() {

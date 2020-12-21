@@ -47,7 +47,7 @@ public class GaEstadoService implements GaEstadoCrudService, Serializable{
 	@Override
 	public GaEstado findById(GaEstado t) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return this.gaEstadoRepository.findById(t);
 	}
 
 	@Override

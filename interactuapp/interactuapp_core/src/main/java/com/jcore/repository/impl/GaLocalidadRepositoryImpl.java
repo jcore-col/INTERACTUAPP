@@ -48,7 +48,7 @@ public class GaLocalidadRepositoryImpl implements GaLocalidadRepository,Serializ
 	@Override
 	public GaLocalidad findById(GaLocalidad t) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return em.find(GaLocalidad.class, t.getId());
 	}
 
 

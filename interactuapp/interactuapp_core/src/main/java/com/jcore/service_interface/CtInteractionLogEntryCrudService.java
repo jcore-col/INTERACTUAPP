@@ -1,6 +1,6 @@
 package com.jcore.service_interface;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import com.jcore.model.entity.CtCampaignEntry;

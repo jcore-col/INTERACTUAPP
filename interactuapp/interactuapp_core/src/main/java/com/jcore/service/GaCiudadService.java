@@ -44,7 +44,7 @@ public class GaCiudadService implements GaCiudadCrudService, Serializable{
 	@Override
 	public GaCiudad findById(GaCiudad t) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return this.gaCiudadRepository.findById(t);
 	}
 
 	@Override

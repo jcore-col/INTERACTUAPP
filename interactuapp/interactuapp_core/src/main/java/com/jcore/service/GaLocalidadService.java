@@ -44,7 +44,7 @@ public class GaLocalidadService implements GaLocalidadCrudService, Serializable{
 	@Override
 	public GaLocalidad findById(GaLocalidad t) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return this.gaLocalidadRepository.findById(t);
 	}
 
 	@Override

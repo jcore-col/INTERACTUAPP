@@ -18,15 +18,11 @@
 		<!-- Barra herramientas opciones registro -->
 		<p:toolbar style="background-color:#C8DEFF;">
 			<f:facet name="right">
-				<p:commandButton value="GLOBALES" icon="pi pi-folder-open"
-					process="@this"
-					actionListener="#{ctInteractionLogEntryController.verGlobales()}"
-					update=":formInteractionLogEntry:messages" />
-				<p:commandButton value="Guardar" icon="pi pi-save"
+				<p:commandButton value="Registrar" icon="pi pi-save"
 					process="@this :formInteractionLogEntry:gridInteractionLogEntry"
 					actionListener="#{ctInteractionLogEntryController.saveInteractionLogEntry()}"
 					update=":formInteractionLogEntry:messages :formInteractionLogEntry:gridInteractionLogEntry :formInteractionLogEntry:dtInteractionLogEntry" />
-				<p:commandButton value="Editar" icon="pi pi-folder-open"
+				<p:commandButton value="Ver Registro" icon="pi pi-folder-open"
 					process="@this"
 					actionListener="#{ctInteractionLogEntryController.editInteractionLogEntry()}"
 					update=":formInteractionLogEntry:messages :formInteractionLogEntry:gridInteractionLogEntry" />
@@ -41,9 +37,9 @@
 			<p:calendar id="fec_entry"
 				value="#{ctInteractionLogEntryController.ctInteractionLogEntry.fecEntry}"
 				locale="es" required="true">
-				<p:ajax
+				<p:ajax event="dateSelect"
 					listener="#{ctInteractionLogEntryController.onFecEntryChange}"
-					update="num_secu_entry_day" />
+					update=":formInteractionLogEntry:messages num_secu_entry_day" />
 			</p:calendar>
 			<p:outputLabel value="Reunion Seleccionada" for="num_secu_entry_day" />
 			<p:selectOneMenu id="num_secu_entry_day"
@@ -51,7 +47,7 @@
 				required="true">
 				<p:ajax
 					listener="#{ctInteractionLogEntryController.onReunionSelected}"
-					update=":formInteractionLogEntry:dtInteractionLogEntry" />
+					update=":formInteractionLogEntry:dtInteractionLogEntry :formInteractionLogEntry:gridInteractionLogEntry" />
 				<f:selectItem itemLabel="Seleccione Reunion" itemValue=""
 					noSelectionOption="true" />
 				<f:selectItems
@@ -59,20 +55,20 @@
 					var="reunion" itemLabel="#{reunion.id.numSecuEntryDay}"
 					itemValue="#{reunion.id.numSecuEntryDay}" />
 			</p:selectOneMenu>
-			<p:outputLabel value="Tipo" for="tip_docum" />
+			<p:outputLabel value="Tipo Doc Asistente" for="tip_docum" />
 			<p:selectOneMenu id="tip_docum"
 				value="#{ctInteractionLogEntryController.ctInteractionLogEntry.id.tipDocum}"
 				required="true">
 				<f:selectItem itemLabel="Cedula" itemValue="CC" />
 				<f:selectItem itemLabel="Pasaporte" itemValue="PAS" />
 			</p:selectOneMenu>
-			<p:outputLabel value="Cedula" for="cod_docum" />
+			<p:outputLabel value="Cedula Asistente" for="cod_docum" />
 			<p:inputText id="cod_docum" required="true" maxlength="20"
 				value="#{ctInteractionLogEntryController.ctInteractionLogEntry.id.codDocum}" />
 			<p:outputLabel value="Calificacion Reunion" for="evaluation_entry" />
 			<p:selectOneMenu id="evaluation_entry"
 				value="#{ctInteractionLogEntryController.ctInteractionLogEntry.evaluationEntry}"
-				required="false" >
+				required="false">
 				<f:selectItem itemLabel="SeleccioneCalificacion" itemValue="0"
 					noSelectionOption="true" />
 				<f:selectItem itemLabel="Mala" itemValue="1" />
@@ -81,9 +77,9 @@
 				<f:selectItem itemLabel="Excelente" itemValue="4" />
 			</p:selectOneMenu>
 			<p:outputLabel value="Estado Reunion" for="tip_situacion" />
-			<p:selectOneMenu id="tip_situacion"
+			<p:selectOneMenu id="tip_situacion" 
 				value="#{ctInteractionLogEntryController.ctCampaignEntry.tipSituacion}"
-				required="false" >
+				required="false">
 				<f:selectItem itemLabel="Estado Reunion" itemValue=""
 					noSelectionOption="true" />
 				<f:selectItem itemLabel="Reunion Creada" itemValue="1" />
@@ -92,54 +88,31 @@
 				<f:selectItem itemLabel="Reunion Cancelada" itemValue="3" />
 			</p:selectOneMenu>
 			<p:outputLabel value="Num Asistentes" for="num_interactions" />
-			<p:inputText id="num_interactions" required="false" maxlength="5" readonly="true"
+			<p:inputText id="num_interactions"  style="background-color:#DBDBDB;" required="false" maxlength="5"
+				readonly="true"
 				value="#{ctInteractionLogEntryController.ctCampaignEntry.numInteractions}" />
-			<p:outputLabel value="Departamento" for="cod_estado" />
-			<p:selectOneMenu id="cod_estado"
-				value="#{ctInteractionLogEntryController.ctCampaignEntry.codEstado}"
-				required="false">
-				<p:ajax
-					listener="#{ctInteractionLogEntryController.onCodEstadoChange}"
-					update="cod_prov" />
-				<f:selectItem itemLabel="Seleccione Depto" itemValue=""
-					noSelectionOption="true" />
-				<f:selectItems value="#{ctInteractionLogEntryController.gaEstados}"
-					var="estado" itemLabel="#{estado.nomEstado}"
-					itemValue="#{estado.id.codEstado}" />
-			</p:selectOneMenu>
-			<p:outputLabel value="Ciudad" for="cod_prov" />
-			<p:selectOneMenu id="cod_prov"
-				value="#{ctInteractionLogEntryController.ctCampaignEntry.codProv}"
-				required="false">
-				<p:ajax
-					listener="#{ctInteractionLogEntryController.onCodProvChange}"
-					update="cod_localidad" />
-				<f:selectItem itemLabel="Seleccione Ciudad" itemValue=""
-					noSelectionOption="true" />
-				<f:selectItems value="#{ctInteractionLogEntryController.gaCiudades}"
-					var="ciudad" itemLabel="#{ciudad.nomCiudad}"
-					itemValue="#{ciudad.id.codCiudad}" />
-			</p:selectOneMenu>
-			<p:outputLabel value="Barrio" for="cod_localidad" />
-			<p:selectOneMenu id="cod_localidad"
-				value="#{ctInteractionLogEntryController.ctCampaignEntry.codLocalidad}"
-				required="false">
-				<f:selectItem itemLabel="Seleccione Barrio" itemValue=""
-					noSelectionOption="true" />
-				<f:selectItems
-					value="#{ctInteractionLogEntryController.gaLocalidades}"
-					var="barrio" itemLabel="#{barrio.nomLocalidad}"
-					itemValue="#{barrio.id.codLocalidad}" />
-			</p:selectOneMenu>
-			<p:outputLabel value="direccion" for="domicilio1" />
-			<p:inputText id="domicilio1" required="false" maxlength="40" readonly="true"
+			<p:outputLabel value="Depto Reunion" for="cod_estado" />
+			<p:inputText id="cod_estado"   style="background-color:#DBDBDB;" required="false" maxlength="50"
+				readonly="true"
+				value="#{ctInteractionLogEntryController.gaEstado.nomEstado}" />
+			<p:outputLabel value="Ciudad Reunion" for="cod_prov" />
+			<p:inputText id="cod_prov"  style="background-color:#DBDBDB;" required="false" maxlength="50"
+				readonly="true"
+				value="#{ctInteractionLogEntryController.gaCiudad.nomCiudad}" />
+			<p:outputLabel value="Barrio Reunion" for="cod_localidad" />
+			<p:inputText id="cod_localidad"  style="background-color:#DBDBDB;" required="false" maxlength="50"
+				readonly="true"
+				value="#{ctInteractionLogEntryController.gaLocalidad.nomLocalidad}" />
+			<p:outputLabel value="Ubicacion Reunion" for="domicilio1" />
+			<p:inputText id="domicilio1" style="background-color:#DBDBDB;" required="false" maxlength="40"
+				readonly="true"
 				value="#{ctInteractionLogEntryController.ctCampaignEntry.domicilio1}" />
 		</p:panelGrid>
 		<p:dataTable id="dtInteractionLogEntry"
 			value="#{ctInteractionLogEntryController.ctInteractionLogEntrys}"
 			style="font-size:12px;" tableStyle="table-layout: auto;"
-			var="reunion" rowKey="#{reunion.id.codDocum}"
-			selectionMode="single" emptyMessage="No existe reuniones">
+			var="reunion" rowKey="#{reunion.id.codDocum}" selectionMode="single"
+			emptyMessage="No existe reuniones">
 			<f:facet name="header">
 				<p:outputLabel value="Registro Asistencia Reuniones" />
 			</f:facet>
@@ -157,7 +130,7 @@
 			<p:column headerText="Tipo Documento">
 				<h:outputText value="#{reunion.id.tipDocum}" />
 			</p:column>
-			
+
 			<p:column headerText="Cedula Asistente">
 				<h:outputText value="#{reunion.id.codDocum}" />
 			</p:column>
@@ -165,7 +138,7 @@
 			<p:column headerText="Registrado por">
 				<h:outputText value="#{reunion.codUsrReg}" />
 			</p:column>
-			
+
 			<p:column headerText="Evaluacion Reunion">
 				<h:outputText value="#{reunion.evaluationEntry}" />
 			</p:column>

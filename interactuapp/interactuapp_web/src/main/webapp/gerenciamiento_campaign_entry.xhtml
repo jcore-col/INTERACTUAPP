@@ -18,10 +18,6 @@
 		<!-- Barra herramientas opciones registro -->
 		<p:toolbar style="background-color:#C8DEFF;">
 			<f:facet name="right">
-				<p:commandButton value="GLOBALES" icon="pi pi-folder-open"
-					process="@this"
-					actionListener="#{ctCampaignEntryController.verGlobales()}"
-					update=":formCampaignEntry:messages" />
 				<p:commandButton value="Guardar" icon="pi pi-save"
 					process="@this :formCampaignEntry:gridCampaignEntry"
 					actionListener="#{ctCampaignEntryController.saveCampaignEntry()}"
