@@ -6,6 +6,8 @@
 		<item value="WildFly 16.0 Runtime"/>
 	</list>
 	<list key="J2EE_EXPORT_JST_WEB">
+		<item value="C:\Users\julio.ospina\Desktop\interactuapp_web.war"/>
+		<item value="C:\INTERACTUAPP_WAR\interactuapp_web.war"/>
 		<item value="C:\dev\interactuapp_web.war"/>
 	</list>
 </section>

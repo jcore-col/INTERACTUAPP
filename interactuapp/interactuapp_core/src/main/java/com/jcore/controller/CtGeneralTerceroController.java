@@ -117,9 +117,8 @@ public class CtGeneralTerceroController implements Serializable{
 		{
 			if (this.g_rol_usr.equals("ADMIN"))
 			{
-				Message.registra_Info("entro a consulta ADMIN");
 				this.ctGeneralTerceros = this.ctGeneralTerceroCrudService.devuelvePersonasPorCia(this.g_cod_compania,this.g_cod_campaing);
-				Message.registra_Info("Termino a consulta ADMIN");
+
 			}
 			else if (this.g_rol_usr.equals("LIDER"))
 			{
@@ -141,7 +140,6 @@ public class CtGeneralTerceroController implements Serializable{
 				
 				if (auxLogPersonRegistry != null)
 				{
-					Message.registra_Info("Entro ciclo");
 					VistaTercero auxVista = new VistaTercero(tercero,auxLogPersonRegistry.getId().getCodUsr());
 					this.vistaTerceros.add(auxVista);
 				}

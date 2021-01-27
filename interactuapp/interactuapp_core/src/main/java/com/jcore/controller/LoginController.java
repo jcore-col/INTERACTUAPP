@@ -66,7 +66,7 @@ public class LoginController implements Serializable {
 
 	public String login() {
 		
-		Message.registra_Info("usuario digitado"+ this.gaUser.getCodUsr());
+		
 		try
 		{
 			this.gaUser = this.gaUserCrudService.buscaPorUsr(this.gaUser.getCodUsr());

@@ -32,9 +32,9 @@
 					update=":formTercero:messages :formTercero:gridTercero :formTercero:dtTercero" />
 			</f:facet>
 		</p:toolbar>
-		<p:panelGrid id="gridTercero" columns="4" layout="grid">
+		<p:panelGrid id="gridTercero" columns="1" layout="grid">
 			<p:outputLabel value="Tipo" for="tip_docum" />
-			<p:selectOneMenu id="tip_docum"
+			<p:selectOneMenu id="tip_docum" styleClass="customTxtWidth300px"
 				value="#{ctGeneralTerceroController.ctGeneralTercero.id.tipDocum}"
 				required="true">
 				<f:selectItem itemLabel="Cedula" itemValue="CC" />
@@ -49,6 +49,7 @@
 				required="false">
 				<f:selectItem itemLabel="Femenino" itemValue="F" />
 				<f:selectItem itemLabel="Masculino" itemValue="M" />
+				<f:selectItem itemLabel="Prefiero no decirlo" itemValue="N" />
 			</p:selectOneMenu>
 			<p:outputLabel value="nombre" for="nom_tercero" />
 			<p:inputText id="nom_tercero" required="true" maxlength="90"
@@ -61,7 +62,17 @@
 			<p:calendar id="fec_nacimiento"
 				value="#{ctGeneralTerceroController.ctGeneralTercero.fecNacimiento}"
 				locale="es" navigator="true" />
-
+			<p:outputLabel value="Perfil" for="cod_tercero" />
+			<p:selectOneMenu id="cod_tercero"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.codTercero}"
+				required="false">
+				<f:selectItem itemLabel="Simpatizante" itemValue="1" />
+				<f:selectItem itemLabel="Comunero" itemValue="2" />
+				<f:selectItem itemLabel="Empresario" itemValue="3" />
+				<f:selectItem itemLabel="Lider Social" itemValue="4" />
+				<f:selectItem itemLabel="Politico" itemValue="5" />
+				<f:selectItem itemLabel="Pte J.A.C" itemValue="6" />
+			</p:selectOneMenu>
 			<p:outputLabel value="Ocupacion" for="cod_profesion" />
 			<p:selectOneMenu id="cod_profesion" style="width:200px"
 				value="#{ctGeneralTerceroController.ctGeneralTercero.codProfesion}"
@@ -119,6 +130,12 @@
 			<p:outputLabel value="telefono" for="tlf_numero" />
 			<p:inputText id="tlf_numero" required="true" maxlength="20"
 				value="#{ctGeneralTerceroController.ctGeneralTercero.tlfNumero}" />
+		    <p:outputLabel value="Email" for="email" />
+			<p:inputText id="email" required="false" maxlength="95"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.email}" />
+		    <p:outputLabel value="Observacion" for="obs_tercero" />
+			<p:inputText id="obs_tercero" required="false" maxlength="60"
+				value="#{ctGeneralTerceroController.ctGeneralTercero.obsTercero}" />
 		</p:panelGrid>
 		<p:dataTable id="dtTercero"
 			value="#{ctGeneralTerceroController.vistaTerceros}"
@@ -182,7 +199,10 @@
 			<p:column headerText="Tel">
 				<h:outputText value="#{tercero.tercero.first.tlfNumero}" />
 			</p:column>
-
+			
+			<p:column headerText="Email">
+				<h:outputText value="#{tercero.tercero.first.email}" />
+			</p:column>
 		</p:dataTable>
 	</h:form>
 </h:body>

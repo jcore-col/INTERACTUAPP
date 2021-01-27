@@ -43,7 +43,6 @@
 <fullyQualifiedTypeName name="com.jcore.service_interface.GaProfesionCrudService"/>
 <fullyQualifiedTypeName name="com.jcore.service_interface.GaCiudadCrudService"/>
 <fullyQualifiedTypeName name="com.jcore.service_interface.GaEstadoCrudService"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaProfesion"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaEstado"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.GaCiudad"/>
@@ -59,5 +58,6 @@
 <fullyQualifiedTypeName name="com.jcore.model.entity.CtCampaignEntry"/>
 <fullyQualifiedTypeName name="com.jcore.model.entity.CtInteractionLogEntry"/>
 <fullyQualifiedTypeName name="com.jcore.utils.Pair"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
